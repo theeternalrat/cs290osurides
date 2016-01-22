@@ -5,7 +5,7 @@ echo "<html><head>"; ?>
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
 	</head><body>
 	  
-<ul id="navbar">
+<ul id="navbar" class="center">
 	<li><a href="index.php" >Home</a></li>
 	<li><a href="settings.php">Settings</a></li>
 	<li><a href="browse.php">Browse</a></li>
