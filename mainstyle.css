@@ -1,0 +1,20 @@
+ul#navbar a {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+ul#navbar a:link {
+	color: blue;
+}
+
+ul#navbar a:visited {
+	color: darkblue;
+}
+
+ul#navbar a:hover {
+	color: lightblue;
+}
+
+ul#navbar a:active {
+	color: red;
+}
