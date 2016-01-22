@@ -12,7 +12,7 @@ header {
 	background-color: #cc5200;
 }
 
-ul{
+ul#navbar{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -23,11 +23,11 @@ ul{
 	width: 100%;
 }
 
-li {
+ul#navbar li {
 	float: right;
 }
 
-li a {
+ul#navbar li a {
 	font-family: Arial, Helvetica, sans-serif;
 	display: block;
 	color: white;
@@ -36,7 +36,7 @@ li a {
 	text-decoration: none;
 }
 
-li a:hover:not(.active) {
+ul#navbar li a:hover:not(.active) {
 	background-color: #000000;
 }
 
