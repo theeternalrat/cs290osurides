@@ -1,0 +1,21 @@
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `pk_id` int(11) NOT NULL AUTO_INCREMENT,
+  `onid_id` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`pk_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`pk_id`, `onid_id`) VALUES
+(1, '100'),
+(2, '200'),
+(3, '300'),
+(4, '400'),
+(5, '500');
+
