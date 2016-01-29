@@ -1,0 +1,24 @@
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `pk_id` int(11) DEFAULT NULL,
+  `driver_enum` enum('DRIVER','PASSENGER') DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `recommend` tinyint(1) NOT NULL DEFAULT '0',
+  `description` longtext,
+  KEY `reviews_fk1` (`pk_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping test data for table `reviews`
+--
+
+INSERT INTO `reviews` (`pk_id`, `driver_enum`, `score`, `recommend`, `description`) VALUES
+(1, 'DRIVER', 10, 1, 'Norway'),
+(2, 'PASSENGER', 7, 1, 'Awesome'),
+(3, 'DRIVER', 3, 0, 'Not cool at all'),
+(4, 'PASSENGER', 5, 1, 'Decent'),
+(5, 'PASSENGER', 8, 1, 'Hygenic');
+
