@@ -4,6 +4,7 @@ include("_header.php");
 if(checkAuth(true) != ""){
 
 echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
+echo "<h1>This is the settings page!</h1>";
 ?>
 <script type="text/javascript">
 	$(document).ready( function() {
