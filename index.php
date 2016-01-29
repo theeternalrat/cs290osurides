@@ -6,5 +6,9 @@
 		
 <h3> Names: Annie, Ryan, Sam, George, Charles, Rebecca. </h3>
 </div>
-
+<script type="text/javascript">
+	$(document).ready( function() {
+		document.getElementById("mainpage").className += "active";
+	});
+</script>
 <?php include("_footer.php"); ?>
