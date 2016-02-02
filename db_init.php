@@ -7,6 +7,6 @@ $dbuser = 'DB_USER';
 $dbpass = 'DB_PASS';
 $dbname = 'DB_NAME';
 
-$mysqli = new mysqli($db_host,$db_user,$db_pass,$db_name);
+$mysqli = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
 ?>
