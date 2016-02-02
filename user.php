@@ -19,7 +19,9 @@ include("db_init.php");
   $user_bio         = $obj->bio;
   $user_email       = $obj->email;
 
-  $query_id = $_GET['q'];
+  if(isset($_GET['q'])){
+    $query_id = $_GET['q'];
+  }
   ?>
 
   <div id=avatar>
@@ -60,5 +62,6 @@ include("db_init.php");
 
 
 <?php
+mysqli_close($mysqli);
 include("_footer.php");
 ?>
