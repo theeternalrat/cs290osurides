@@ -2,7 +2,9 @@
 session_start();
 
 function auth($redir){
-	if(isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "" return $_SESSION["onidid"];
+	if(isset($_SESSION["onidid"]) && $_SESSION["onidid"] != ""){
+		 return $_SESSION["onidid"];
+	}
 	
 	$pageURL = 'http';
 	if(isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
