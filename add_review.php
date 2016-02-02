@@ -7,7 +7,7 @@
 <li><label>ID:</label> <input type="number" name="id">
 <li><label>Driver or Passenger:</label> <input type="text" name="driverorpassenger">
 <li><label>Score:</label> <input type="number" name="user_score">
-<li><label>Recommend?:</label> <input type="number" name="recommend">
+<li><label>Recommend?:</label> <input type="checkbox" name="recommend">
 <li><label>Description:</label> <input type="text" name="description">
 <li><input type=submit>
 </ul>
