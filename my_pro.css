@@ -1,0 +1,41 @@
+div {
+	border-radius: 5px;
+}
+
+#ratings {
+	z-index: 1;
+	/*position: absolute; */
+	width: 100%;
+	margin-top: -20px;
+	height: 120px;
+	background-color: #cc5200;
+	margin-bottom: 10px;
+	font-size: 30px;
+}
+
+#profile_pic {
+	z-index: 2;
+	float: right;
+	margin-top: -130px; 
+	margin-bottom: 10px;
+	border: solid violet;
+	width: 120px;
+	height: 120px;
+}
+
+#posts {
+	width: 75%;
+	height: 240px;
+	background-color: #cc5200;
+	font-size: 12px;
+}
+
+#new_post {
+	font-size: 12px;
+}
+#new_driv_pass {
+	width: 120px;
+	height: 60px;
+	font-size: 12px;
+	float: right;
+}
