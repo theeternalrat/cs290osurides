@@ -15,24 +15,16 @@ if (isset($_POST["recommend"])) {
 } else {
 	$recommend = "0";
 }
-$errorMsg = "";
-if ($recommend == "") {
-	$errorMsg = "Please go back and enter all params.";
-}
 
-if ($errorMsg == "") {
-	// ok, we can just insert the record
-	//TODO bind id
-	if ($stmt = $mysqli->prepare("insert into reviews (pk_id, recommend) values(1,?)")) {
-		$stmt->bind_param("i", $recommend);
-		$stmt->execute();
-		$stmt->close();
-		echo '<p>Created...';
-	} else {
-		printf("Error: %s\n", $mysqli->error);
-	}
+// ok, we can just insert the record
+//TODO bind id
+if ($stmt = $mysqli->prepare("insert into reviews (pk_id, recommend) values(1,?)")) {
+	$stmt->bind_param("i", $recommend);
+	$stmt->execute();
+	$stmt->close();
+	echo '<p>Created...';
 } else {
-	echo "<h4 class='error'>".htmlspecialchars($errorMsg)."</h4>";
+	printf("Error: %s\n", $mysqli->error);
 }
 ?>
 
