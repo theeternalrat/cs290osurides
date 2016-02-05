@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-<<<<<<< HEAD
+
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
 
@@ -13,7 +13,7 @@ function checkAuth($doRedirect) {
 	 } else {
 	  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
 	 }
-=======
+	 
 function auth($redir){
 	if(isset($_SESSION["onidid"]) && $_SESSION["onidid"] != ""){
 		 return $_SESSION["onidid"];
@@ -48,8 +48,7 @@ function auth($redir){
 	}
 	return "";
 }
-echo "<html><head>"; ?>
->>>>>>> 9df0a7e50c8192fe0d5087d1298419ba5e4cbe75
+ 
 
 	$ticket = isset($_REQUEST["ticket"]) ? $_REQUEST["ticket"] : "";
 
@@ -76,7 +75,7 @@ echo "<html><head>"; ?>
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
 		
 	</head><body>
-<<<<<<< HEAD
+
 	<div id="container">
 		<div class="header">
 			<ul id="navbar" class="center">
@@ -86,11 +85,10 @@ echo "<html><head>"; ?>
 			</ul>
 		</div>
 		<div class="content">
-=======
 	  
 <ul id="navbar" class="center">
+	<li id="Name" class="name"> OSU Rides</li> 
 	<li id="mainpage"><a href="index.php" >Home</a></li>
 	<li id="settingspage"><a href="settings.php">Settings</a></li>
 	<li id="browsepage"><a href="browse.php">Browse</a></li>
 </ul>
->>>>>>> 9df0a7e50c8192fe0d5087d1298419ba5e4cbe75
