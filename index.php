@@ -3,7 +3,7 @@
 	<div class= "info">
 		<img src="images/filler.png" alt="filler for future map" class ="filler-image">
 		<h1>OSU Rides</h1>
-		<p>We are team of student programmers currently working on compleating a website for our cs 290 course. Our group Consists of: Ryan Atkinson, Samuel Morey, Takumi Crary, Rebecca Farnham, Charles Koll, and Anne Yuen. We Hope you enjoy our site!</p>
+		<p>We are a team of student programmers currently working on completing a website for our CS 290 course. Our group consists of: Ryan Atkinson, Samuel Morey, Takumi Crary, Rebecca Farnham, Charles Koll, and Annie Lei. We hope you enjoy our site!</p>
 	</div>
 	<div class= "login-filler">
 		<a href="settings.php">Log In</a>
