@@ -8,20 +8,32 @@ include("db_init.php");
 
   //TODO ADD CSS
   //TODO use query_id
-  $results_users = $mysqli->query("select avatar_url_rel,name,bio,email FROM users WHERE pk_id = 1");
-  $obj = $results_users->fetch_object();
-  if(!($obj)){
-    echo 'ERROR! NO SQL RESULT OBJECT';
+
+  if (isset($_GET["q"])) {
+  	$id = $_GET["q"];//$_POST["recommend"]
+  } else {
+  	echo 'ERROR! User id field is unset.';
   }
 
-  $user_avatar_url_rel  = $obj->avatar_url_rel;
-  $user_name        = $obj->name;
-  $user_bio         = $obj->bio;
-  $user_email       = $obj->email;
+  if ($results_users = $mysqli->prepare("select avatar_url_rel,name,bio,email FROM users WHERE pk_id = ?")) {
+    $results_users->bind_param("i", $id);
+  	$results_users->execute();
 
-  if(isset($_GET['q'])){
-    $query_id = $_GET['q'];
+    $obj = $results_users->get_result()->fetch_object();
+    if(!($obj)){
+      echo 'ERROR! NO SQL RESULT OBJECT';
+    }
+
+    $user_avatar_url_rel  = $obj->avatar_url_rel;
+    $user_name        = $obj->name;
+    $user_bio         = $obj->bio;
+    $user_email       = $obj->email;
+
+
+    $results_users->close();
+
   }
+
   ?>
 
   <div id=avatar>
@@ -41,6 +53,8 @@ include("db_init.php");
   </div>
 </div>
 
+
+//TODO add in WHERE pk_id = bound id variable
 <div id=reviews>
   <?php
   echo "<table class='reviews'><tr><th>Driver or Passewnger<th>Score<th>Recommend?<th>Description<th></tr>";
