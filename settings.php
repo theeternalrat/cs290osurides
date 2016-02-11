@@ -3,7 +3,7 @@
 
 	if (checkAuth(true) != "") {
 		echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
-		echo "<h1>This is the settings page!</h1>";
+		//echo "<h1>This is the settings page!</h1>";
 ?>
 	<script type="text/javascript">
 	$(document).ready( function() {
@@ -11,22 +11,54 @@
 	});
 	</script>
 <html>
+<body>
+
 <h1>My Profile</h1>
-<div id="ratings">
-	<p>***** Passenger</p>
-	<p>***** Driver</p>
-	<img src="https://cdn4.iconfinder.com/data/icons/round-buttons/512/red_user.png" id="profile_pic"/>
-</div>
-<h3>My Posts</h3>
-	<div id="posts">
-		<ul>
-			<li>Looking for a one-way trip to Narnia, minimal baggage</li>
-			<li>Swimming to Madagascar on the 22nd</li>
-			<li>Who left this illegal item in my minivan</li>
-		</ul>
-	</div>
-<p>Make a post</p>
+
+<p>Make a post:</p>
+<form action="settings.php" method="POST">
+	Name: <input type="text" name="name">
+	<br>
+	Email: <input type="text" name="email">
+	<br>
+	Starting location: <input type="text" name="start">
+	<br>
+	Destination: <input type="text" name="end">
+	<br>
+	<!-- Note: maybe change status values to easy ints? -->
+	I would like to be a: <br>
+	<input type="radio" name="status" value="Driver">Driver<br>
+	<input type="radio" name="status" value="Passenger">Passenger<br>
+	<!-- Will hide this subform from passengers later -->
+	Seats available: <input type="text" name="seats"><br>
+	Comments: <textarea name="comments"></textarea><br>
+	<br>
+	<input type="submit" name="submit" value="Make post">
+</form>
+
+<?php 
+	echo "Your post: "; 
+	echo "<br><br>";
+	echo $_POST["name"];
+	echo "<br>";
+	echo $_POST["email"];
+	echo "<br>";
+	echo $_POST["start"];
+	echo "<br>";
+	echo $_POST["end"];
+	echo "<br>";
+	echo $_POST["status"];
+	echo "<br>";
+	if ($_POST["status"] === "Driver") {
+		echo $_POST["seats"];	
+		echo "<br>";
+	}
+	echo $_POST["comments"];
+	echo "<br><br>";
+?>
+</body>
 </html>
+
 <?php
 	}	
 	include("_footer.php");
