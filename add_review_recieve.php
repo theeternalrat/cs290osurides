@@ -16,10 +16,16 @@ if (isset($_POST["recommend"])) {
 	$recommend = "0";
 }
 
+if (isset($_POST["id"])) {
+	$id = $_POST["id"];//$_POST["recommend"]
+} else {
+	echo 'ERROR! User id field is unset.';
+}
+
 // ok, we can just insert the record
-//TODO bind id
-if ($stmt = $mysqli->prepare("insert into reviews (pk_id, recommend) values(1,?)")) {
-	$stmt->bind_param("i", $recommend);
+//TODO test bind id
+if ($stmt = $mysqli->prepare("insert into reviews (pk_id, recommend) values(?,?)")) {
+	$stmt->bind_param("ii", $i, $recommend);
 	$stmt->execute();
 	$stmt->close();
 	echo '<p>Created...';
