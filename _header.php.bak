@@ -1,66 +1,70 @@
+<<<<<<< HEAD
+<?php include("auth.php"); ?>
+=======
 <?php
-	include("_header.php");
+session_start();
 
-	if (checkAuth(true) != "") {
-		echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
-		//echo "<h1>This is the settings page!</h1>";
-?>
-	<script type="text/javascript">
-	$(document).ready( function() {
-		document.getElementById("settingspage").className += "active";
-	});
-	</script>
-<html>
-<body>
+function checkAuth($doRedirect) {
+	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
 
-<h1>My Profile</h1>
+	 $pageURL = 'http';
+	 if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+	 $pageURL .= "://";
+	 if ($_SERVER["SERVER_PORT"] != "80") {
+	  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["SCRIPT_NAME"];
+	 } else {
+	  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["SCRIPT_NAME"];
+	 }
 
-<p>Make a post:</p>
-<form action="settings.php" method="POST">
-	Name: <input type="text" name="name">
-	<br>
-	Email: <input type="text" name="email">
-	<br>
-	Starting location: <input type="text" name="start">
-	<br>
-	Destination: <input type="text" name="end">
-	<br>
-	<!-- Note: maybe change status values to easy ints? -->
-	I would like to be a: <br>
-	<input type="radio" name="status" value="Driver">Driver<br>
-	<input type="radio" name="status" value="Passenger">Passenger<br>
-	<!-- Will hide this subform from passengers later -->
-	Seats available: <input type="text" name="seats"><br>
-	Comments: <textarea name="comments"></textarea><br>
-	<br>
-	<input type="submit" name="submit" value="Make post">
-</form>
+	$ticket = isset($_REQUEST["ticket"]) ? $_REQUEST["ticket"] : "";
 
-<?php 
-	echo "Your post: "; 
-	echo "<br><br>";
-	echo $_POST["name"];
-	echo "<br>";
-	echo $_POST["email"];
-	echo "<br>";
-	echo $_POST["start"];
-	echo "<br>";
-	echo $_POST["end"];
-	echo "<br>";
-	echo $_POST["status"];
-	echo "<br>";
-	if ($_POST["status"] === "Driver") {
-		echo $_POST["seats"];	
-		echo "<br>";
+	if ($ticket != "") {
+		$url = "https://login.oregonstate.edu/cas/serviceValidate?ticket=".$ticket."&service=".$pageURL;
+		$html = file_get_contents($url);
+		$pattern = '/\\<cas\\:user\\>([a-zA-Z0-9]+)\\<\\/cas\\:user\\>/';
+		preg_match($pattern, $html, $matches);
+		if ($matches && count($matches) > 1) {
+			$onidid = $matches[1];
+			$_SESSION["onidid"] = $onidid;
+			return $onidid;
+		}
+	} else if ($doRedirect) {
+		$url = "https://login.oregonstate.edu/cas/login?service=".$pageURL;
+		echo "<script>location.replace('" . $url . "');</script>";
 	}
-	echo $_POST["comments"];
-	echo "<br><br>";
-?>
-</body>
-</html>
+	return "";
+}
 
-<?php
-	}	
-	include("_footer.php");
-?>
+echo "<html><head>"; ?>
+>>>>>>> feature/user_page
 
+<html><head>
+	<title>OSU Rides</title>
+		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="mainstyle.css">
+
+	</head><body>
+<<<<<<< HEAD
+	<div id="container">
+		<div class="header">
+			<ul id="navbar" class="center">
+				<li id="Name" class="name"> OSU Rides</li> 
+				<?php  if(checkAuth(false) != ""){
+					echo "<li id='login'><a href='logout.php'>Log Out</a></li>";
+				} else {
+					echo "<li id='login'><a href='settings.php'>Log In</a></li>";
+				} ?>
+				<li id="settingspage"><a href="settings.php">Settings</a></li>
+				<li id="browsepage"><a href="browse.php">Browse</a></li>
+				<li id="mainpage"><a href="index.php" >Home</a></li>
+			</ul>
+		</div>
+		<div class="content">
+=======
+
+<ul id="navbar" class="center">
+	<li id="mainpage"><a href="index.php" >Home</a></li>
+	<li id="settingspage"><a href="settings.php">Settings</a></li>
+	<li id="browsepage"><a href="browse.php">Browse</a></li>
+</ul>
+>>>>>>> feature/user_page

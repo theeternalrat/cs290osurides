@@ -4,7 +4,7 @@
 	<title>OSU Rides</title>
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
-		
+
 	</head><body>
 	<div id="container">
 		<div class="header">
