@@ -3,7 +3,7 @@
 
 	if (checkAuth(true) != "") {
 		echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
-		//echo "<h1>This is the settings page!</h1>";
+		//echo "<h1>Your ID is:".$_SESSION("onidid")."</h1>";
 ?>
 	<script type="text/javascript">
 	$(document).ready( function() {
@@ -81,6 +81,7 @@ function statusCheck() {
 
 <?php
 	}	
+	ini_set('display_errors', 'On');
 	include("_footer.php");
 ?>
 
