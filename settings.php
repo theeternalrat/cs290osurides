@@ -20,14 +20,12 @@
 
 <script type="text/javascript">
 function statusCheck() {
-	if(document.getElementById('driverCheck').checked) {
+	if(document.getElementById('driverCheck').checked || document.getElementById('eitherCheck').checked) {
 		document.getElementById('ifDriver').style.visibility = 'visible';
 	}
 	else 
 		document.getElementById('ifDriver').style.visibility = 'hidden';
-	console.log("out of the function");
 }
-console.log("hello???")
 </script>	
 
 <p>Make a post:</p>
@@ -40,6 +38,7 @@ console.log("hello???")
 	I would like to be a: <br>
 	<input type="radio" name="status" value="Driver" onclick="javascript:statusCheck();" id="driverCheck">Driver<br>
 	<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
+	<input type="radio" name="status" value="Either" onclick="javascript:statusCheck();" id="eitherCheck">Either<br>
 		<div id="ifDriver" style="visibility:hidden">
 	<!-- Will hide this subform from passengers later -->
 	Seats available: <select name="seats">
@@ -70,7 +69,7 @@ console.log("hello???")
 	echo "<br>";
 	echo $_POST["status"];
 	echo "<br>";
-	if ($_POST["status"] === "Driver") {
+	if ($_POST["status"] === "Driver" || $_POST["status"] === "Either") {
 		echo $_POST["seats"];	
 		echo "<br>";
 	}
