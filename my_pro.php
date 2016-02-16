@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="my_pro.css" />
+		<link type="text/css" rel="stylesheet" href="mainstyle.css" />
 	</head>
 	<body>
 		<h1>My Profile</h1>

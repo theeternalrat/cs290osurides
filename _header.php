@@ -1,6 +1,6 @@
-<?php
-session_start();
+<?php include("auth.php"); ?>
 
+<<<<<<< HEAD
 
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
@@ -70,21 +70,34 @@ function auth($redir){
 }
 
 echo "<html><head>"; ?>
+=======
+<html><head>
+>>>>>>> develop
 	<title>OSU Rides</title>
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
-		
-	</head><body>
 
+	</head><body>
+<<<<<<< HEAD
+
+=======
+>>>>>>> develop
 	<div id="container">
 		<div class="header">
 			<ul id="navbar" class="center">
-				<li id="mainpage"><a href="index.php" >Home</a></li>
+				<li id="Name" class="name"> OSU Rides</li> 
+				<?php  if(checkAuth(false) != ""){
+					echo "<li id='login'><a href='logout.php'>Log Out</a></li>";
+				} else {
+					echo "<li id='login'><a href='settings.php'>Log In</a></li>";
+				} ?>
 				<li id="settingspage"><a href="settings.php">Settings</a></li>
 				<li id="browsepage"><a href="browse.php">Browse</a></li>
+				<li id="mainpage"><a href="index.php" >Home</a></li>
 			</ul>
 		</div>
 		<div class="content">
+<<<<<<< HEAD
 	  
 <ul id="navbar" class="center">
 	<li id="Name" class="name"> OSU Rides</li> 
@@ -92,3 +105,5 @@ echo "<html><head>"; ?>
 	<li id="settingspage"><a href="settings.php">Settings</a></li>
 	<li id="browsepage"><a href="browse.php">Browse</a></li>
 </ul>
+=======
+>>>>>>> develop
