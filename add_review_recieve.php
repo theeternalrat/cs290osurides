@@ -10,27 +10,33 @@ error_reporting(E_ALL);
 
 <?php
 //print_r($_REQUEST);
+
 if (isset($_POST["recommend"])) {
 	$recommend = "1";//$_POST["recommend"]
 } else {
 	$recommend = "0";
 }
 
-if (isset($_POST["id"])) {
-	$id = $_POST["id"];//$_POST["recommend"]
-} else {
-	echo 'ERROR! User id field is unset.';
-}
+$all_fields_set = isset($_POST["id"]) && isset($_POST["Spot"]) && isset($_POST["user_score"]) && isset($_POST["description"]) ? true : false;
 
-// ok, we can just insert the record
-//TODO test bind id
-if ($stmt = $mysqli->prepare("insert into reviews (pk_id, recommend) values(?,?)")) {
-	$stmt->bind_param("ii", $i, $recommend);
-	$stmt->execute();
-	$stmt->close();
-	echo '<p>Created...';
-} else {
-	printf("Error: %s\n", $mysqli->error);
+if ($all_fields_set) {
+
+	$id						= $_POST["id"];
+	$driver_enum  = $_POST["Spot"];
+	$score        = $_POST["user_score"];
+	$description  = $_POST["description"];
+
+	if ($stmt = $mysqli->prepare("insert into reviews (pk_id, driver_enum, score, recommend, description) values(?,?,?,?,?)")) {
+		$stmt->bind_param("isiis", $id, $driver_enum, $score, $recommend, $description);
+		$stmt->execute();
+		$stmt->close();
+		echo '<p>Created...';
+	} else {
+		printf("Error: %s\n", $mysqli->error);
+	}
+
+}else {
+	echo 'Field is unset';
 }
 ?>
 
