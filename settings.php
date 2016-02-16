@@ -40,7 +40,6 @@ function statusCheck() {
 	<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
 	<input type="radio" name="status" value="Either" onclick="javascript:statusCheck();" id="eitherCheck">Either<br>
 		<div id="ifDriver" style="visibility:hidden">
-	<!-- Will hide this subform from passengers later -->
 	Seats available: <select name="seats">
 		<option value="1">1</option>
 		<option value="2">2</option>
