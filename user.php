@@ -6,9 +6,6 @@ include("db_init.php");
 <div id=user_bio>
   <?php
 
-  //TODO ADD CSS
-  //TODO use query_id
-
   if (isset($_GET["q"])) {
   	$id = $_GET["q"];//$_POST["recommend"]
   } else {
@@ -54,11 +51,13 @@ include("db_init.php");
 </div>
 
 
-//TODO add in WHERE pk_id = bound id variable
 <div id=reviews>
   <?php
   echo "<table class='reviews'><tr><th>Driver or Passewnger<th>Score<th>Recommend?<th>Description<th></tr>";
-  if ($result_reviews = $mysqli->query("select driver_enum,score,recommend,description from reviews")) {
+  if ($result_reviews_stmt = $mysqli->prepare("select driver_enum,score,recommend,description from reviews WHERE PK_ID = ?")) {
+      $result_reviews_stmt->bind_param("i", $id);
+      $result_reviews_stmt->execute();
+      $result_reviews = $result_reviews_stmt->get_result();
       while($obj = $result_reviews->fetch_object()){
               echo "<tr>";
               echo "<td>".htmlspecialchars($obj->driver_enum)."</td>";
@@ -68,7 +67,7 @@ include("db_init.php");
               echo "</tr>";
       }
 
-      $result_reviews->close();
+      $result_reviews_stmt->close();
   }
   echo "</table>";
   ?>
