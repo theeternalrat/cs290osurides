@@ -15,22 +15,47 @@
 
 <h1>My Profile</h1>
 
+<p>Average driver rating: </p>
+<p>Average passenger rating: </p>
+
+<script type="text/javascript">
+function statusCheck() {
+	if(document.getElementById('driverCheck').checked) {
+		document.getElementById('ifDriver').style.visibility = 'visible';
+	}
+	else 
+		document.getElementById('ifDriver').style.visibility = 'hidden';
+	console.log("out of the function");
+}
+console.log("hello???")
+</script>	
+
 <p>Make a post:</p>
 <form action="settings.php" method="POST">
-	Name: <input type="text" name="name">
-	<br>
-	Email: <input type="text" name="email">
-	<br>
 	Starting location: <input type="text" name="start">
 	<br>
 	Destination: <input type="text" name="end">
 	<br>
 	<!-- Note: maybe change status values to easy ints? -->
 	I would like to be a: <br>
-	<input type="radio" name="status" value="Driver">Driver<br>
-	<input type="radio" name="status" value="Passenger">Passenger<br>
+	<input type="radio" name="status" value="Driver" onclick="javascript:statusCheck();" id="driverCheck">Driver<br>
+	<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
+		<div id="ifDriver" style="visibility:hidden">
 	<!-- Will hide this subform from passengers later -->
-	Seats available: <input type="text" name="seats"><br>
+	Seats available: <select name="seats">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value=">=10">10+</option>
+	</select>
+	</div>
+	<br>
 	Comments: <textarea name="comments"></textarea><br>
 	<br>
 	<input type="submit" name="submit" value="Make post">
@@ -39,10 +64,6 @@
 <?php 
 	echo "Your post: "; 
 	echo "<br><br>";
-	echo $_POST["name"];
-	echo "<br>";
-	echo $_POST["email"];
-	echo "<br>";
 	echo $_POST["start"];
 	echo "<br>";
 	echo $_POST["end"];
