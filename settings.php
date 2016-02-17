@@ -17,6 +17,12 @@
 			echo "Error, no sql request object.";
 		}
 	}
+	
+	var_dump($results->num_rows);
+	
+	if($results->num_rows == 0){
+		echo "I did it.";
+	}
 
 	if($results->num_rows == 0){
 		?>
