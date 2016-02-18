@@ -38,36 +38,50 @@
     </style>
   </head>
   <body>
-    <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
+    <input id="pac-input1" class="controls" type="text"
+        placeholder="Enter start">
+	<input id="pac-input2" class="controls" type="text"
+        placeholder="Enter destination">
     <div id="map"></div>
 
     <script>
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 44.5667, lng: 123.2833},
-    zoom: 20
+    center: {lat: 44.00, lng: -120.5},
+    zoom: 6
   });
 
-  var input = document.getElementById('pac-input');
+  var start = document.getElementById('pac-input1');
+  var destination = document.getElementById('pac-input2');
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.bindTo('bounds', map);
+  var startAutocomplete = new google.maps.places.Autocomplete(start);
+  startAutocomplete.bindTo('bounds', map);
 
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  var destinationAutocomplete = new google.maps.places.Autocomplete(destination);
+  destinationAutocomplete.bindTo('bounds', map);
 
-  var infowindow = new google.maps.InfoWindow();
-  var marker = new google.maps.Marker({
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(start);
+
+  var startInfowindow = new google.maps.InfoWindow();
+  var startMarker = new google.maps.Marker({
     map: map
   });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
+  startMarker.addListener('click', function() {
+    startInfowindow.open(map, startMarker);
   });
 
-  autocomplete.addListener('place_changed', function() {
-    infowindow.close();
-    var place = autocomplete.getPlace();
+  var destinationInfowindow = new google.maps.InfoWindow();
+  var destinationMarker = new google.maps.Marker({
+    map: map
+  });
+  destinationMarker.addListener('click', function() {
+    destinationInfowindow.open(map, destinationMarker);
+  });
+
+  startAutocomplete.addListener('place_changed', function() {
+    startInfowindow.close();
+    var place = startAutocomplete.getPlace();
     if (!place.geometry) {
       return;
     }
@@ -80,16 +94,39 @@ function initMap() {
     }
 
     // Set the position of the marker using the place ID and location.
-    marker.setPlace({
+    startMarker.setPlace({
       placeId: place.place_id,
       location: place.geometry.location
     });
-    marker.setVisible(true);
+    startMarker.setVisible(true);
 
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-        'Place ID: ' + place.place_id + '<br>' +
-        place.formatted_address);
-    infowindow.open(map, marker);
+    startInfowindow.setContent('<div><strong>' + place.formatted_address + '</strong>');
+    startInfowindow.open(map, startMarker);
+  });
+
+  destinationAutocomplete.addListener('place_changed', function() {
+    destinationInfowindow.close();
+    var place = destinationAutocomplete.getPlace();
+    if (!place.geometry) {
+      return;
+    }
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+
+    // Set the position of the marker using the place ID and location.
+    destinationMarker.setPlace({
+      placeId: place.place_id,
+      location: place.geometry.location
+    });
+    destinationMarker.setVisible(true);
+
+    destinationInfowindow.setContent('<div><strong>' + place.formatted_address + '</strong>');
+    destinationInfowindow.open(map, destinationMarker);
   });
 }
 
