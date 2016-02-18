@@ -5,27 +5,27 @@ body {
 }
 
 header {
-	margin-top: 50px;
-	height: 30;
+	margin-top: 2.98%;
+	height: 1.79%;
 	text-align: center;
 	font-family: "Arial Black", Helvetica, sans-serif;
 	background-color: #cc5200;
 }
 
-.header{
+.header {
 	width: 100%;
-	height: 80px;
+	height: 4.76%;
 }
 
 .content {
 	width: 100%;
 	float: left;
-	min-height: 500px;
+	min-height: 29.76%;
 }
 
-ul#navbar{
+ul#navbar {
 	list-style-type: none;
-	margin-bottom: 20px;
+	margin-bottom: 1.19%;
 	margin-top: 0px;
 	padding: 0;
 	overflow: hidden;
@@ -44,7 +44,7 @@ ul#navbar li a {
 	display: block;
 	color: white;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 0.83%;
 	text-decoration: none;
 }
 
@@ -54,12 +54,12 @@ ul#navbar li a:hover:not(.active) {
 
 ul#navbar .name {
 	font-family: Arial, Helvetica, sans-serif;
-	padding: 14px 16px;
+	padding: 0.83%;
 	float: left;
 	display: block;
 	text-align: center;
 	color: white;
-  background: #cc5200;
+	background: #cc5200;
 }
 
 .active {
@@ -71,61 +71,63 @@ p {
 }
 
 .info {
-  margin: 200px 250px 100px 20px;
-  padding: 20px 40px 40px;
-  max-width: 350px;
-	max-height: 500px;
-  text-align: left;
-  background: #fff;
-  border-bottom: 4px solid #ccc;
-  border-radius: 6px;
+	margin: 11.90% 13.02% 5.95% 1.04%;
+	padding: 1.19% 2.08% 2.38%;
+	max-width: 18.23%;
+	max-height: 29.76%;
+	text-align: left;
+	background: #fff;
+	border-bottom: 0.24% solid #ccc;
+	border-radius: 0.36%;
 }
+
 .info:hover {
-  border-color: #cc5200;
+	border-color: #cc5200;
 }
+
 .login-filler {
-  margin: 2px  100px 100px 20px;
-  padding: 20px 40px 40px;
-  max-width: 350px;
-	max-height: 500px;
-  text-align: left;
-  background: #fff;
-  border-bottom: 4px solid #ccc;
-  border-radius: 6px;
+	margin: 0.12% 5.21% 5.95% 1.04%;
+	padding: 1.19% 2.08% 2.38%;
+	max-width: 18.23%;
+	max-height: 29.76%;
+	text-align: left;
+	background: #fff;
+	border-bottom: 0.24% solid #ccc;
+	border-radius: 0.36%;
 }
+
 .login-filler:hover {
-  border-color: #cc5200;
+	border-color: #cc5200;
 }
+
 .filler-image {
-  top: 100px;
-	right: 100px;
+	top: 5.95%;
+	right: 5.21%;
 	position: absolute;
-  width: 1200px;
-  height: 800px;
-  border-radius: 6px;
-  border: 3px solid white;
-  transition: all .5s;
-}
-.filler-image:hover {
-	transform: scale(1.1) rotate(360deg);
+	width: 62.50%;
+	height: 47.62%;
+	border-radius: 0.36%;
+	border: 0.16% solid white;
+	transition: all .5s;
 }
 
 footer {
 	width: 100%;
-	height: 30;
+	height: 1.79%;
 	position: absolute;
-	top: -8px;
+	top: -0.48%;
 	text-align: center;
 	font-family: "Arial Black", Helvetica, sans-serif;
 	background-color: white;
 }
+
 a.team {
 	display: inline-block;
 	text-indent: -9999px;
-	margin-left: 5px;
-	width: 30px;
-	height: 30px;
-	background-size: 30px 30px;
+	margin-left: 0.26%;
+	width: 1.56%;
+	height: 1.79%;
+	background-size: 1.56% 1.79%;
 	opacity: .5;
 	transition: all .25s;
 }
