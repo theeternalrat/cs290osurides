@@ -20,9 +20,9 @@
 
 	if($results->num_rows == 0){
 		?>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
-		</script>
+		></script> -->
 <?php
 	}
 ?>
