@@ -33,6 +33,7 @@ ul#navbar {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	height: 2em;
 }
 
 ul#navbar li {
@@ -44,7 +45,8 @@ ul#navbar li a {
 	display: block;
 	color: white;
 	text-align: center;
-	padding: 0.83%;
+/*	padding: 0.83%;*/
+	padding: 0.5em;
 	text-decoration: none;
 }
 
@@ -54,7 +56,8 @@ ul#navbar li a:hover:not(.active) {
 
 ul#navbar .name {
 	font-family: Arial, Helvetica, sans-serif;
-	padding: 0.83%;
+/*	padding: 0.83%;*/
+	padding: 0.5em;
 	float: left;
 	display: block;
 	text-align: center;
