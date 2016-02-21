@@ -103,6 +103,7 @@ p {
 	top: 10.00%;
 	right: 5.21%;
 	position: absolute;
+	z-index: -1;
 	width: 65.00%;
 	height: auto;
 	border-radius: 0.36%;
