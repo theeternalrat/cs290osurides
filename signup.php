@@ -18,11 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$nickname = test_input($_POST["nickname"]);
 	if (!preg_match("/^[A-Za-z0-9_-]+$/", $nickname)){
 		$nickErr = "Only letters, numbers, underscores/dashes allowed";
-		echo "nay";
 	}
-	else {
-		echo "good nick";
-	} 
 	if (empty($_POST["bio"])) {
 		$bio = "";
 	}
@@ -36,7 +32,6 @@ function test_input($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
 	$data = htmlspecialchars($data);
-	echo "test: i'm in test_input";
 	return $data;
 }
 ?>
