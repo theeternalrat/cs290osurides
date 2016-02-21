@@ -45,7 +45,6 @@ ul#navbar li a {
 	display: block;
 	color: white;
 	text-align: center;
-/*	padding: 0.83%;*/
 	padding: 0.5em;
 	text-decoration: none;
 }
@@ -56,7 +55,6 @@ ul#navbar li a:hover:not(.active) {
 
 ul#navbar .name {
 	font-family: Arial, Helvetica, sans-serif;
-/*	padding: 0.83%;*/
 	padding: 0.5em;
 	float: left;
 	display: block;
@@ -74,13 +72,12 @@ p {
 }
 
 .info {
-	margin: 11.90% 13.02% 5.95% 1.04%;
+	margin: 5% 2%;
 	padding: 1.19% 2.08% 2.38%;
-	max-width: 18.23%;
-	max-height: 29.76%;
+	max-width: 20%;
 	text-align: left;
 	background: #fff;
-	border-bottom: 0.24% solid #ccc;
+	border-bottom: 4px solid #ccc;
 	border-radius: 0.36%;
 }
 
@@ -89,13 +86,12 @@ p {
 }
 
 .login-filler {
-	margin: 0.12% 5.21% 5.95% 1.04%;
+	margin: 0% 2%;
 	padding: 1.19% 2.08% 2.38%;
-	max-width: 18.23%;
-	max-height: 29.76%;
+	max-width: 20%;
 	text-align: left;
 	background: #fff;
-	border-bottom: 0.24% solid #ccc;
+	border-bottom: 4px solid #ccc;
 	border-radius: 0.36%;
 }
 
@@ -104,13 +100,13 @@ p {
 }
 
 .filler-image {
-	top: 5.95%;
+	top: 10.00%;
 	right: 5.21%;
 	position: absolute;
-	width: 62.50%;
-	height: 47.62%;
+	width: 65.00%;
+	height: auto;
 	border-radius: 0.36%;
-	border: 0.16% solid white;
+	border: 3px solid white;
 	transition: all .5s;
 }
 
