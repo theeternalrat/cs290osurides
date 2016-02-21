@@ -10,7 +10,7 @@
 include("_header.php");
 
 //error flags:
-$nickErr = $bioErr = "";
+$nickErr = "";
 //vars
 $nickname = $bio = "";
 
@@ -36,14 +36,24 @@ function test_input($data) {
 }
 ?>
 
-<!-- Hides seats dropdown if passenger -->
 <script type="text/javascript">
+//Hides seats dropdown if passenger 
 function statusCheck() {
 	if(document.getElementById('driverCheck').checked || document.getElementById('eitherCheck').checked) {
 		document.getElementById('ifDriver').style.visibility = 'visible';
 	}
 	else 
 		document.getElementById('ifDriver').style.visibility = 'hidden';
+}
+
+//Lets user know how many chars they have left
+function charLimit(field, count, max) {
+	if(field.value.length > max) {
+		field.value = field.value.substring(0, max);
+	}
+	else {
+		count.value = max - field.value.length;
+	}
 }
 </script>	
 
@@ -72,7 +82,10 @@ function statusCheck() {
 	</select>
 	</div>
 	Bio:<br>
-	<textarea rows="4" cols="50" placeholder="Enter a bit about yourself." name="bio" maxlength="1000"><?php echo $bio;?></textarea>
+	<textarea rows="4" cols="50" placeholder="Enter a bit about yourself." name="bio" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
+	onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"><?php echo $bio;?></textarea>
+	<br>
+	<input readonly type="text" name="countdown" value="1000"> characters left
 	<br>
 	<input type="checkbox" name="emailterms" value="eterms" required> I agree to let OSURides access my OSU provided information and use my OSU email for alerts.
 	<br>
