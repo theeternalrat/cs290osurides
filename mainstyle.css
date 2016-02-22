@@ -1,6 +1,6 @@
 body {
 	background-color: #F5F2ED;
-	/*background-color: #707070;*/
+/*	background-color: #707070;*/
 	margin: 0px;
 }
 
@@ -10,6 +10,13 @@ header {
 	text-align: center;
 	font-family: "Arial Black", Helvetica, sans-serif;
 	background-color: #cc5200;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	text-align: center;
 }
 
 .header {
@@ -73,7 +80,7 @@ p {
 
 .info {
 	margin: 5% 2%;
-	padding: 1.19% 2.08% 2.38%;
+	padding: 2%;
 	max-width: 20%;
 	text-align: left;
 	background: #fff;
@@ -87,12 +94,17 @@ p {
 
 .login-filler {
 	margin: 0% 2%;
-	padding: 1.19% 2.08% 2.38%;
-	max-width: 20%;
-	text-align: left;
+	padding: 2% 4%;
 	background: #fff;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
 	border-bottom: 4px solid #ccc;
 	border-radius: 0.36%;
+	text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .login-filler:hover {
@@ -100,7 +112,7 @@ p {
 }
 
 .filler-image {
-	top: 10.00%;
+	top: 10%;
 	right: 5.21%;
 	position: absolute;
 	z-index: -1;
@@ -108,7 +120,6 @@ p {
 	height: auto;
 	border-radius: 0.36%;
 	border: 3px solid white;
-	transition: all .5s;
 }
 
 footer {
