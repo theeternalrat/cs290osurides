@@ -84,12 +84,14 @@ p {
 	max-width: 20%;
 	text-align: left;
 	background: #fff;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
 	border-bottom: 4px solid #ccc;
-	border-radius: 0.36%;
+	border-left: 1px solid #ccc;
 }
 
 .info:hover {
-	border-color: #cc5200;
+	border-color: #ccc #ccc #cc5200 #ccc;
 }
 
 .login-filler {
@@ -99,8 +101,8 @@ p {
 	border-top: 0px;
 	border-right: 0px;
 	border-left: 0px;
-	border-bottom: 4px solid #ccc;
-	border-radius: 0.36%;
+	border: 4px solid #ccc;
+	border-radius: 5%;
 	text-align: center;
 	font-size: 2em;
 	font-weight: bold;
