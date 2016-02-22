@@ -1,18 +1,12 @@
-<html>
-<head>
-<style>
-.error {color:#FF0000;}
-</style>
-</head>
-<body>
-
 <?php
 include("_header.php");
+include("db_init.php");
 
 //error flags:
 $nickErr = "";
 //vars
 $nickname = $bio = "";
+$nick = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$nickname = test_input($_POST["nickname"]);
@@ -93,24 +87,43 @@ function charLimit(field, count, max) {
 </form>
 
 <?php
-	$status = 0;
-	$seats = 0;
-	if($_POST["status"] === "Driver" || $_POST["status"] === "Either"){
-		$status = 1;
-		$seats = $_POST["seats"];
-	}
-	
-	getAdvanced();
-	
-	include("db_init.php");
-	$sql = "INSERT INTO users (onid_id, avatar_url_rel, name, nickname, bio, email, status, steats VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-	if($result = $mysqli->prepare($sql)){
-		$results->bind_param("issssii", $onid, $avatar, $name, $nickname, $bio, $email, $status, $seats);
-		$results->execute();
-	}
 
+	if(isset($_POST["continue"])){
+		$status = 0;
+		$seats = 0;
+		if($_POST["status"] === "Driver" || $_POST["status"] === "Either"){
+			$status = 1;
+			$seats = $_POST["seats"];
+		}
+		
+		if($_POST["avatar"] == ""){
+			$avatar = "cat.jpg";
+		}
+		
+		$avatar = htmlspecialchars($avatar);
+		$nickname = htmlspecialchars($nickname);
+		$bio = htmlspecialchars($bio);
+		$status = htmlspecialchars($status);
+		$seats = htmlspecialchars($seats);
+		
+		$rinfo = getAdvanced($_SESSION["onidid"]);
+		
+		$stmt = $mysqli->prepare("INSERT INTO users (onid_id, avatar_url_rel, name, nickname, bio, email, status, seats) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+		if(false===$stmt)
+			echo "<br>prepare failed ". $mysqli->error;
+		
+		$rc = $stmt->bind_param("ssssssii", $rinfo["uid"], $avatar, $rinfo["cn"], $nickname, $bio, $rinfo["mail"], $status, $seats);
+		if(false===$rc)
+			echo "<br>bind_param failed ". $stmt->error;
+		
+		$rc = $stmt->execute();
+		if(false===$rc)
+			echo "<br>execute failed ". $stmt->error;
+		
+		$stmt->close();
+		
+		$mysqli->close();
+	}
+	
 include("_footer.php");
 ?>
-
-</body>
-</html>
