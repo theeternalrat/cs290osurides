@@ -1,9 +1,7 @@
 <?php
 	include("_header.php");
 
-	if (checkAuth(true) != "") {
-		echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
-		
+	if (checkAuth(true) != "") {		
 	include("db_init.php");
 	
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
@@ -14,6 +12,7 @@
 		
 		$results->bind_result($data);
 		$results->fetch();
+		$results->close();
 	}
 
 	if($data == 0){
@@ -22,6 +21,14 @@
 			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
 		</script>
 <?php
+	} else {
+		if($results = $mysqli->prepare("SELECT * FROM users WHERE onid_id=?")){
+			$results->bind_param("s", $_SESSION["onidid"]);
+			$results->execute();
+			$results->bind_result($id, $onid, $avatar, $name, $nickname, $bio, $email, $status, $seats, $raiting);
+			$results->fetch();
+			$results->close();
+		}
 	}
 ?>
 	<script type="text/javascript">
@@ -34,8 +41,9 @@
 
 <h1>My Profile</h1>
 
-<p>Average driver rating:</p>
-<p>Average passenger rating: </p>
+<p>Average Rating: <?php echo $raiting; ?></p>
+
+<?php /*
 
 <script type="text/javascript">
 function statusCheck() {
@@ -93,9 +101,10 @@ function statusCheck() {
 	}
 	echo $_POST["comments"];
 	echo "<br><br>";
+	*/
+	
+	$mysqli->close();
 ?>
-</body>
-</html>
 
 <?php
 	}	
