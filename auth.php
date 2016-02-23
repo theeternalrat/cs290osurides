@@ -32,3 +32,56 @@ function checkAuth($doRedirect) {
 	} 
 	return "";
 }
+
+
+function getAdvanced($onid) {
+	$ds=ldap_connect("directory.oregonstate.edu");
+ 
+$dn = "o=orst.edu";
+$filter="(uid=$onid)";
+$justthese = array("uid", "cn", "mail");
+$sr=ldap_search($ds, $dn, $filter);
+$info = ldap_get_entries($ds, $sr);
+
+$rinfo;
+
+//code courtesy of Prof Scaffidi 
+for ($i = 0; $i < $info["count"]; $i++) {
+                if ($i > 0)                                                                                                                                                                                                                                                                                                                                                                                                              
+                                
+ 
+                $altphonerec = $info[$i]["homephone"];
+                /*if ("".$altphonerec == "Array")
+                                $altphonerec = $altphonerec[0];
+                if (strpos($altphonerec, "1 541 737 ") !== 0)
+                                $altphonerec = "";
+ 
+                $alttitle = $info[$i]["osuprimaryaffiliation"];
+                if ("".$alttitle == "Array")
+                                $alttitle = $alttitle[0];
+                if ($alttitle == "S")
+                                $alttitle = "Student";
+                else
+                                $alttitle = "";*/
+ 
+                $altemail = $onid . "@onid.oregonstate.edu";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                foreach ($justthese as $key) {
+                                $value = $info[$i][$key];
+                                if (is_array($value))
+                                                $rinfo[$key]=$value[0];
+                                else if ($key == "telephonenumber" && $value == "" && $altphonerec <> "")
+                                                $rinfo[$key]=$altphonerec;
+                                else if ($key == "title" && $value == "" && $alttitle <> "")
+                                                $rinfo[$key]=$alttitle;
+                                else if ($key == "mail" && $value == "" && $altemail <> "")
+                                                $rinfo[$key]=$altemail;
+                                else       
+                                                $rinfo[$key]=$value;
+ 
+                               
+                }
+}                                                                                                                                                                                                                                                                                                                                                                                          
+ldap_close($ds);  
+
+	return $rinfo;
+}

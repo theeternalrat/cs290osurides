@@ -10,11 +10,13 @@ include("db_init.php");
   	$id = $_GET["q"];//$_POST["recommend"]
   } else {
   	echo 'ERROR! User id field is unset.';
+	$id = 1;
   }
 
   if ($results_users = $mysqli->prepare("select avatar_url_rel,name,bio,email FROM users WHERE pk_id = ?")) {
     $results_users->bind_param("i", $id);
   	$results_users->execute();
+
 
     $obj = $results_users->get_result()->fetch_object();
     if(!($obj)){
@@ -34,7 +36,7 @@ include("db_init.php");
   ?>
 
   <div id=avatar>
-    <img src="imgs/".$user_avatar_url_rel. "alt="Mountain View" style="width:304px;height:228px;">
+    <img src="<?php echo $user_avatar_url_rel ?>"alt="Mountain View" style="width:304px;height:228px;">
       <?php echo "<p> Avatar: ".htmlspecialchars($user_avatar_url_rel)."</p>"?>
   </div>
   <div id=info>

@@ -27,9 +27,13 @@ h1 {
 .content {
 	width: 100%;
 	float: left;
+<<<<<<< HEAD
+	min-height: 29.76%;
+=======
 	min-height: 500px;
 	margin-left: 2em;
 	margin-right: 2em;
+>>>>>>> feature/login
 }
 
 ul#navbar {
