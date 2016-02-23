@@ -17,6 +17,7 @@ include("db_init.php");
     $results_users->bind_param("i", $id);
   	$results_users->execute();
 
+
     $obj = $results_users->get_result()->fetch_object();
     if(!($obj)){
       echo 'ERROR! NO SQL RESULT OBJECT';

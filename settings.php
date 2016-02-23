@@ -3,27 +3,23 @@
 
 	if (checkAuth(true) != "") {
 		echo "<div class=\"main\"><h1>This is the settings page! You've been authenticated.</h1></div>";
-		//echo "<h1>Your ID is:".$_SESSION("onidid")."</h1>";
 		
 	include("db_init.php");
 	
-	$sqlq = "SELECT COUNT(*) as num FROM users WHERE onid_id=?";
+	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){
-		$results->bind_param("i", $_SESSION["onid"]);
+		$ref = $_SESSION["onidid"];
+		$results->bind_param("s", $ref);
 		$results->execute();
 		
-		$obj = $results->fetch_row();
-		if(!($obj)){
-			echo "Error, no sql request object.";
-		}
-		
-		var_dump($obj);
+		$results->bind_result($data);
+		$results->fetch();
 	}
 
-	if($obj[0] == 0){
+	if($data == 0){
 		?>
 		<script type="text/javascript">
-			//window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
 		</script>
 <?php
 	}
