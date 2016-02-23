@@ -7,21 +7,23 @@
 		
 	include("db_init.php");
 	
-	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
+	$sqlq = "SELECT COUNT(*) as num FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){
 		$results->bind_param("i", $_SESSION["onid"]);
 		$results->execute();
 		
-		$obj = $results->get_result()->fetch_object();
+		$obj = $results->fetch_row();
 		if(!($obj)){
 			echo "Error, no sql request object.";
 		}
+		
+		var_dump($obj);
 	}
 
-	if($results->num_rows == 0){
+	if($obj[0] == 0){
 		?>
 		<script type="text/javascript">
-			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
+			//window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
 		</script>
 <?php
 	}
