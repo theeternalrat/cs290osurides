@@ -17,6 +17,7 @@ include("db_init.php");
     $results_users->bind_param("i", $id);
   	$results_users->execute();
 
+
     $obj = $results_users->get_result()->fetch_object();
     if(!($obj)){
       echo 'ERROR! NO SQL RESULT OBJECT';
@@ -35,7 +36,7 @@ include("db_init.php");
   ?>
 
   <div id=avatar>
-    <img src="imgs/<?php echo $user_avatar_url_rel ?>"alt="Mountain View" style="width:304px;height:228px;">
+    <img src="<?php echo $user_avatar_url_rel ?>"alt="Mountain View" style="width:304px;height:228px;">
       <?php echo "<p> Avatar: ".htmlspecialchars($user_avatar_url_rel)."</p>"?>
   </div>
   <div id=info>

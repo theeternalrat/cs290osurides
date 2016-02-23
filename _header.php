@@ -6,7 +6,6 @@
 		<link rel="stylesheet" type="text/css" href="mainstyle.css">
 
 	</head><body>
-
 	<div id="container">
 		<div class="header">
 			<ul id="navbar" class="center">
