@@ -40,18 +40,16 @@
   </head>
   <body>
     <div>
-      <input id="pac-input1" class="controls" type="text"
+      <input id="start" class="controls" type="text"
         placeholder="Enter start">
-	<input id="pac-input2" class="controls" type="text"
+      <input id="end" class="controls" type="text"
         placeholder="Enter destination">
-    </select>
+      <input type="submit" id="submit">  
     </div>
     <div id="map"></div>
 
     <script>
 function initMap() {
-  var start = document.getElementById('pac-input1');
-  var end = document.getElementById('pac-input2');
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -59,6 +57,7 @@ function initMap() {
     zoom: 7,
     center: {lat: 41.85, lng: -87.65}
   });
+
   directionsDisplay.setMap(map);
 
   var startAutocomplete = new google.maps.places.Autocomplete(start);
@@ -67,48 +66,16 @@ function initMap() {
   var endAutocomplete = new google.maps.places.Autocomplete(end);
   endAutocomplete.bindTo('bounds', map);
 
-  document.getElementById('start').addEventListener('change', onChangeHandler);
-  document.getElementById('end').addEventListener('change', onChangeHandler);
+  document.getElementById('submit').addEventListener('click', function() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  });
 
-    startAutocomplete.addListener('place_changed', function() {
-    var place = startAutocomplete.getPlace();
-    if (!place.geometry) {
-      return;
-    }
-
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(10);
-    }
-
-	calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-	});
-
-	endAutocomplete.addListener('place_changed', function() {
-    var place = endAutocomplete.getPlace();
-    if (!place.geometry) {
-      return;
-    }
-
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(10);
-    }
-
-	calculateAndDisplayRoute(directionsService, directionsDisplay);
-
-	});
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   directionsService.route({
-    origin: document.getElementById('start'),
-    destination: document.getElementById('end'),
+    origin: document.getElementById('start').value,
+    destination: document.getElementById('end').value,
     travelMode: google.maps.TravelMode.DRIVING
   }, function(response, status) {
     if (status === google.maps.DirectionsStatus.OK) {
@@ -124,6 +91,3 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         async defer></script>
   </body>
 </html>
-
-
-//calculateAndDisplayRoute(directionsService, directionsDisplay);
