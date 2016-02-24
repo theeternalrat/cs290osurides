@@ -2,6 +2,25 @@
 include("_header.php");
 include("db_init.php");
 
+	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
+	if($results = $mysqli->prepare($sqlq)){
+		$ref = $_SESSION["onidid"];
+		$results->bind_param("s", $ref);
+		$results->execute();
+		
+		$results->bind_result($data);
+		$results->fetch();
+		$results->close();
+	}
+
+	if($data == 1){
+		?>
+		<script type="text/javascript">
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/settings.php";
+		</script>
+		<?php
+	}
+
 //error flags:
 $nickErr = "";
 //vars
