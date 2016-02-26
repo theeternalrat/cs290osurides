@@ -13,9 +13,9 @@
 				<?php  if(checkAuth(false) != ""){
 					echo "<li id='login'><a href='logout.php'>Log Out</a></li>";
 				} else {
-					echo "<li id='login'><a href='settings.php'>Log In</a></li>";
+					echo "<li id='login'><a href='my_profile.php'>Log In</a></li>";
 				} ?>
-				<li id="settingspage"><a href="settings.php">Settings</a></li>
+				<li id="settingspage"><a href="my_profile.php">My Profile</a></li>
 				<li id="browsepage"><a href="browse.php">Browse</a></li>
 				<li id="mainpage"><a href="index.php" >Home</a></li>
 			</ul>

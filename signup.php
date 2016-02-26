@@ -16,7 +16,7 @@ include("db_init.php");
 	if($data == 1){
 		?>
 		<script type="text/javascript">
-			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/settings.php";
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/my_profile.php";
 		</script>
 		<?php
 	}
