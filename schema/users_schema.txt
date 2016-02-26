@@ -1,3 +1,20 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.4
+-- http://www.phpmyadmin.net
+--
+-- Host: oniddb
+-- Generation Time: Feb 25, 2016 at 05:25 PM
+-- Server version: 5.5.47
+-- PHP Version: 5.2.6-1+lenny16
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `atkinsor-db`
+--
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `users`
 --
@@ -7,18 +24,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `onid_id` varchar(64) DEFAULT NULL,
   `avatar_url_rel` text NOT NULL,
   `name` varchar(64) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
   `bio` longtext NOT NULL,
   `email` varchar(64) NOT NULL,
+  `status` int(1) NOT NULL,
+  `seats` int(2) NOT NULL,
+  `raiting` int(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pk_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`pk_id`, `onid_id`, `avatar_url_rel`, `name`, `bio`, `email`) VALUES
-(1, '100', 'cat.jpg', 'BOB MONEY', 'HAS MONEY!!!', 'kekekek'),
-(2, '200', '', '', '', ''),
-(3, '300', '', '', '', ''),
-(4, '400', '', '', '', ''),
-(5, '500', '', '', '', '');
+INSERT INTO `users` (`pk_id`, `onid_id`, `avatar_url_rel`, `name`, `nickname`, `bio`, `email`, `status`, `seats`, `raiting`) VALUES
+(1, '100', 'cat.jpg', 'BOB MONEY', '', 'HAS MONEY!!!', 'kekekek', 0, 0, 0),
+(20, 'leian', 'imgs/leian.jpg', 'Lei, Anne Yuen', 'Annie', 'I''m me ', 'leian@oregonstate.edu', 0, 1, 0),
+(23, 'kollch', 'imgs/kollch.jpg', 'Koll, Charles D', 'adlfkj', 'asdlfj asdlfkj', 'kollch@oregonstate.edu', 0, 1, 0),
+(21, 'farnhamr', 'imgs/farnhamr.png', 'Farnham, Rebecca Rene', 'farnhamr', 'this is a bio wooooow', 'farnhamr@oregonstate.edu', 0, 3, 0),
+(22, 'atkinsor', 'imgs/atkinsor.png', 'Atkinson, Ryan David', 'booradley', 'I am awesome!', 'atkinsor@oregonstate.edu', 0, 1, 0);

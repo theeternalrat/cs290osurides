@@ -25,11 +25,32 @@ h1 {
 }
 
 .content {
-	width: 100%;
+	width: 96%;
 	float: left;
 	min-height: 500px;
-	margin-left: 2em;
-	margin-right: 2em;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+section {
+    width: auto;
+    height: 200px;
+    background: aqua;
+    margin: 0;
+    padding: 10px;
+}
+
+#col1 {
+	width: 49.5%;
+    height: 200px;
+    background: red;
+    float: left;
+}
+
+#col2 {
+	margin-left: 50.5%;
+    height: 200px;
+    background: black;	
 }
 
 ul#navbar {

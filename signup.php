@@ -1,26 +1,6 @@
 <?php
 include("_header.php");
 include("db_init.php");
-
-	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
-	if($results = $mysqli->prepare($sqlq)){
-		$ref = $_SESSION["onidid"];
-		$results->bind_param("s", $ref);
-		$results->execute();
-		
-		$results->bind_result($data);
-		$results->fetch();
-		$results->close();
-	}
-
-	if($data == 1){
-		?>
-		<script type="text/javascript">
-			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/my_profile.php";
-		</script>
-		<?php
-	}
-
 //error flags:
 $nickErr = "";
 //vars
@@ -147,10 +127,6 @@ function charLimit(field, count, max) {
 		} else {
 			$uploadOk = 0;
 		}
-	// Check if file already exists
-	if (file_exists($final_dir)) {
-		$uploadOk = 0;
-	}
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
 		echo "Sorry, your file is too large.";
@@ -204,6 +180,12 @@ function charLimit(field, count, max) {
 		}
 		
 		$mysqli->close();
+		
+		?>
+		<script type="text/javascript">
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/my_profile.php";
+		</script>
+		<?php
 	}
 	
 include("_footer.php");
