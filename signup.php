@@ -107,7 +107,7 @@ function validate() {
 	<br>
 	Bio:<br>
 	<textarea rows="4" cols="50" placeholder="Enter a bit about yourself." name="bio" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
-	onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"><?php echo $bio;?></textarea>
+	onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"></textarea>
 	<br>
 	<input readonly type="text" name="countdown" value="1000"> characters left
 	<br>
