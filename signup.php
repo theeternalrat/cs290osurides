@@ -1,6 +1,6 @@
 <html>
 <style>
-.error {color:#FF0000;} <!-- makes bad-nickname error message red -->
+#errors {color:#FF0000;} <!-- makes bad-nickname error message red -->
 </style>
 </html>
 <?php
@@ -25,33 +25,6 @@ include("db_init.php");
 		</script>
 		<?php
 	}
-
-//error flags:
-$nickErr = "";
-//vars
-$nickname = $bio = "";
-$nick = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$nickname = test_input($_POST["nickname"]);
-	if (!preg_match("/^[A-Za-z0-9_-]+$/", $nickname)){
-		$nickErr = " *Only letters, numbers, underscores/dashes allowed";
-	}
-	if (empty($_POST["bio"])) {
-		$bio = "";
-	}
-	else {
-		$bio = test_input($_POST["bio"]);
-	}
-}
-
-//strips preceding/trailing whitespace/slashes + does htmlspecialchars
-function test_input($data) {
-	$data = trim($data);
-	$data = stripslashes($data);
-	$data = htmlspecialchars($data);
-	return $data;
-}
 ?>
 
 <script type="text/javascript">
@@ -73,15 +46,25 @@ function charLimit(field, count, max) {
 		count.value = max - field.value.length;
 	}
 }
+
+//Checks whether nickname is valid (only letters, nums, underscores ok)
+function validate() {
+	var bad = /^[\w ]+$/;
+	if(!bad.test(document.myForm.nickname.value)) {
+		document.getElementById("errors").innerHTML=" *Please use letters, numbers, and underscores only.";
+		return false;
+	}
+}
 </script>	
 
 <h1>Signup!</h1>
 <h3>You do not yet have an account. Please fill in the information below and click 'Continue'</h3>
 <p>User Information:</p>
-<form action="signup.php" method="POST" enctype="multipart/form-data">
-	Nickname: <input autofocus required type="text" name="nickname" value="<?php echo $nick;?>"><span class="error"><?php echo $nickErr;?></span>
-	<br>
-	I would like to be a: <br>
+<form action="signup.php" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validate();">
+	Nickname: <input autofocus required type="text" name="nickname">
+	<span id="errors">
+	</span>
+	<br>I would like to be a: <br>
 	<input type="radio" name="status" value="Driver" onclick="javascript:statusCheck();" id="driverCheck" required>Driver<br>
 	<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
 	<input type="radio" name="status" value="Either" onclick="javascript:statusCheck();" id="eitherCheck">Either<br>
