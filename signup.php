@@ -1,3 +1,8 @@
+<html>
+<style>
+.error {color:#FF0000;} <!-- makes bad-nickname error message red -->
+</style>
+</html>
 <?php
 include("_header.php");
 include("db_init.php");
@@ -30,7 +35,7 @@ $nick = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$nickname = test_input($_POST["nickname"]);
 	if (!preg_match("/^[A-Za-z0-9_-]+$/", $nickname)){
-		$nickErr = "Only letters, numbers, underscores/dashes allowed";
+		$nickErr = " *Only letters, numbers, underscores/dashes allowed";
 	}
 	if (empty($_POST["bio"])) {
 		$bio = "";
