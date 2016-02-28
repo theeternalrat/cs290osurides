@@ -99,7 +99,7 @@ function charLimit(field, count, max) {
 		<option value=">=10">10+</option>
 	</select>
 	</div>
-	<br>
+	Upload a profile picture: <br>
 	<input type="file" name="fileToUpload" id="fileToUpload" onchange="previewFile()"><br>
 	<img src="" height="200" alt="Image preview...">
 
