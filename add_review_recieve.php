@@ -17,14 +17,19 @@ if (isset($_POST["recommend"])) {
 	$recommend = "0";
 }
 
-$all_fields_set = isset($_POST["id"]) && isset($_POST["Spot"]) && isset($_POST["user_score"]) && isset($_POST["description"]) ? true : false;
+if (isset($_POST["description"])) {
+	$description = $_POST["description"];
+} else {
+	$description = "N/A";
+}
+
+$all_fields_set = isset($_POST["id"]) && isset($_POST["Spot"]) && isset($_POST["user_score"]) ? true : false;
 
 if ($all_fields_set) {
 
-	$id						= $_POST["id"];
+	$id			  = $_POST["id"];
 	$driver_enum  = $_POST["Spot"];
 	$score        = $_POST["user_score"];
-	$description  = $_POST["description"];
 
 	if ($stmt = $mysqli->prepare("insert into reviews (pk_id, driver_enum, score, recommend, description) values(?,?,?,?,?)")) {
 		$stmt->bind_param("isiis", $id, $driver_enum, $score, $recommend, $description);
