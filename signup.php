@@ -61,7 +61,7 @@ function validate() {
 <h3>You do not yet have an account. Please fill in the information below and click 'Continue'</h3>
 <p>User Information:</p>
 <form action="signup.php" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validate();">
-	Nickname: <input autofocus required type="text" name="nickname">
+	Nickname: <input autofocus required type="text" name="nickname" maxlength="40">
 	<span id="errors">
 	</span>
 	<br>I would like to be a: <br>
