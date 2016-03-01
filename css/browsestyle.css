@@ -1,0 +1,16 @@
+section {
+    width: 95%;
+	height: auto;
+	border: 1px solid black;
+	display: flex;
+	display: -webkit-flex;
+	margin: auto;
+	min-height: 500px;
+}
+
+section div {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	margin: 0.5%;
+}
