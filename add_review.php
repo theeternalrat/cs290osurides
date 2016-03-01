@@ -10,7 +10,7 @@
  <option value="DRIVER">Driver</option>
  <option value="PASSENGER">Passenger</option>
 </select>
-<li><label>Score:</label> <input type="number" name="user_score" required>
+<li><label>Score:</label> <input type="number" name="user_score" oninput="validity.valid||(value='');" min=0 max=5 required>
 <li><label>Recommend?:</label> <input type="checkbox" name="recommend">
 <li><label>Description:</label> <input type="text" name="description">
 <li><input type=submit>
