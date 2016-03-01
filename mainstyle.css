@@ -170,5 +170,5 @@ footer ul li {
 }
 .sam:hover {
 	opacity: 1;
-	transform: scale(1.5) rotate(1440deg);
+	transform: scale(1.2) rotate(1440deg);
 }
