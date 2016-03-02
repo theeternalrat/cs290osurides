@@ -38,7 +38,7 @@
     </style>
   </head>
   <body>
-    <input id="pac-input1" class="controls" type="text" placeholder="Enter a destination.">
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a destination.">
     <div id="map"></div>
 
     <script>
@@ -49,7 +49,7 @@ function initMap() {
     zoom: 6
   });
 
-  var destination = document.getElementById('pac-input2');
+  var destination = document.getElementById('pac-input');
 
   var destinationAutocomplete = new google.maps.places.Autocomplete(destination);
   destinationAutocomplete.bindTo('bounds', map);
