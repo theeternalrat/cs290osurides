@@ -21,7 +21,7 @@ include("db_init.php");
       }
       $result_rides_stmt->close();
   }else{
-    echo "GO HAM";
+    echo "SQL Prepare failed.;
   }
   echo "</table>";
   ?>
