@@ -30,7 +30,6 @@ if ($all_fields_set) {
 
   echo $leave_date;
 
-//TODO MODIFY EVERYTHING BELLOW
 	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, from_lat, from_long, destination_lat, destination_long, open_to_passengers) values(?,?,?,?,?,?,true)")) {
 		$stmt->bind_param("isdddd", $carpool_creator, $leave_date, $from_lat, $from_long, $destination_lat, $destination_long);
 		$stmt->execute();
