@@ -1,6 +1,6 @@
 <?php
 include("db_init.php");
-	$sqls = "SELECT id, userid, startlocation, endlocation FROM posts LIMIT 1000";
+	$sqls = "SELECT id, userid, startlocation, endlocation FROM posts LIMIT 2";
 	if($results = $mysqli->prepare($sqls)){
 		$results->execute();
 		
