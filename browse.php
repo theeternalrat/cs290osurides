@@ -10,6 +10,9 @@ echo "<h1>This is the browse page!</h1>";
 <section>
 	<div id="posts">
 		Search Bar Here
+		<br>
+		<ul id="info">
+		</ul>
 		<script>
 			function locListender(){
 				console.log(this.responseText);
@@ -20,7 +23,14 @@ echo "<h1>This is the browse page!</h1>";
 				url: 'get_location_data.php',
 				//data: variables to be sent
 				success: function(json){
-					document.getElementById("posts")
+					var list = document.getElementById("info");
+					/*
+					for(i = 1; i <= 1000; i++){
+						var entry = document.createElement('li');
+						entry.appendChild(document.createTextNode(i + " -> " + json[i]));
+						list.appendChild(entry);
+					}
+					*/
 				}
 			})
 		</script>
