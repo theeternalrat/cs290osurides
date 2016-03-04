@@ -1,13 +1,11 @@
 <?php include("_header.php"); ?>
-
-	<div class= "info">
-		<img src="images/filler.png" alt="filler for future map" class ="filler-image">
+	<div class="info">
 		<h1>OSU Rides</h1>
 		<p>We are a team of student programmers currently working on completing a website for our CS 290 course. Our group consists of: Ryan Atkinson, Samuel Morey, Takumi Crary, Rebecca Farnham, Charles Koll, and Annie Lei. We hope you enjoy our site!</p>
-	</div>
-	<div class= "login-filler">
-		<a href="settings.php">Log In</a>
-	</div>
+	</div> 
+	<img src="imgs/filler.jpg" alt="example map" class="image">
+	<div><input type="button" class="do_things_button" onclick="location.href='browse.php';" value="Find a Ride" /></div>
+	<div><input type="button" class="do_things_button" onclick="location.href='my_profile.php';" value="Make a Ride" /></div>
 <script type="text/javascript">
 	$(document).ready( function() {
 		document.getElementById("mainpage").className += "active";
