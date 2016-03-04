@@ -6,11 +6,11 @@ include("db_init.php");
 		$max = 180;
 		
 	for($i = 0; $i < 1000; $i++){	
-		$uid = generateRandomString(7);
-		$sloc = mt_rand($min*10, $max*10)/10;
-		$eloc = mt_rand($min*10, $max*10)/10;
+		$uid = 22;
+		$sloc = frand(-90, 90, 6). "," . frand($min, $max, 6);
+		$eloc = frand(-90, 90, 6) . "," . frand($min, $max, 6);
 		
-		$stmt = $mysqli->prepare("INSERT INTO posts (userid, startlocation, endlocation) VALUES(?, ?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO rides (carpool_creator, startlocation, endlocation) VALUES(?, ?, ?)");
 		if(false===$stmt)
 			echo "<br>prepare failed ". $mysqli->error;
 		
@@ -34,6 +34,11 @@ function generateRandomString($length = 10) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+function frand($min, $max, $decimals = 0) {
+  $scale = pow(10, $decimals);
+  return mt_rand($min * $scale, $max * $scale) / $scale;
 }
 
 echo "Ended";
