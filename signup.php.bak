@@ -6,9 +6,12 @@
 <?php
 include("_header.php");
 
+<<<<<<< HEAD
+=======
 if(checkAuth(true) != ""){
 include("db_init.php");
 
+>>>>>>> feature/login
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){
 		$ref = $_SESSION["onidid"];
@@ -63,7 +66,11 @@ function validate() {
 <h3>You do not yet have an account. Please fill in the information below and click 'Continue'</h3>
 <p>User Information:</p>
 <form action="signup.php" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validate();">
+<<<<<<< HEAD
 	Nickname: <input autofocus required type="text" name="nickname" maxlength="40">
+=======
+	Nickname: <input autofocus required type="text" name="nickname">
+>>>>>>> feature/login
 	<span id="errors">
 	</span>
 	<br>I would like to be a: <br>
