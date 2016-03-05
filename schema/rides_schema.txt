@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `rides` (
   `from_long` float NOT NULL,
   `destination_lat` float NOT NULL,
   `destination_long` float NOT NULL,
+  `details` varchar(500) NOT NULL,
   `open_to_passengers` tinyint(1) NOT NULL,
   PRIMARY KEY (`carpool_id`),
   KEY `carpool_creator` (`carpool_creator`)
