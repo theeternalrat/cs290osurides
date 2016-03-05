@@ -11,6 +11,12 @@ error_reporting(E_ALL);
 <?php
 //print_r($_REQUEST);
 
+if (isset($_POST["details"])) {
+	$details = $_POST["details"];
+} else {
+	$details = "No description provided";
+}
+
 $all_fields_set = isset($_POST["carpool_creator"])  &&
                   isset($_POST["leave_date"])       &&
                   isset($_POST["from_lat"])         &&
@@ -30,8 +36,8 @@ if ($all_fields_set) {
 
   echo $leave_date;
 
-	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, from_lat, from_long, destination_lat, destination_long, open_to_passengers) values(?,?,?,?,?,?,true)")) {
-		$stmt->bind_param("isdddd", $carpool_creator, $leave_date, $from_lat, $from_long, $destination_lat, $destination_long);
+	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, from_lat, from_long, destination_lat, destination_long, details, open_to_passengers) values(?,?,?,?,?,?,?,true)")) {
+		$stmt->bind_param("isdddds", $carpool_creator, $leave_date, $from_lat, $from_long, $destination_lat, $destination_long, $details);
 		$stmt->execute();
 		$stmt->close();
 		echo '<p>Created...';
