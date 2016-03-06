@@ -15,7 +15,7 @@ function initMap() {
     geo();
   });
 }
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {	
   directionsService.route({
     origin: document.getElementById('start').value,
     destination: document.getElementById('end').value,
@@ -27,6 +27,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       window.alert('Directions request failed due to ' + status);
     }
   });
+  
+  document.getElementById('startlocs').value = document.getElementById('start').value;
+	document.getElementById('endlocs').value = document.getElementById('end').value;
 }
   function geo() {
     var geocoder1 = new google.maps.Geocoder();
@@ -34,7 +37,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     geocoder1.geocode( { 'address': document.getElementById('start').value}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng1 = results[0].geometry.location;
-	    document.getElementById("test1").innerHTML = latlng1;
+		var start = latlng1.lat() + "," + latlng1.lng();
+	    document.getElementById("startloc").value = start;
       } else {
         alert("Error occurred: " + status);
       }
@@ -42,9 +46,28 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	geocoder2.geocode( { 'address': document.getElementById('end').value}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng2 = results[0].geometry.location;
-	    document.getElementById("test2").innerHTML = latlng2;
+		var dest = latlng2.lat() + "," + latlng2.lng()
+	    document.getElementById("endloc").value = dest;
       } else {
         alert("Error occurred: " + status);
       }
     });
   }
+  
+function validateForm(){
+	if(document.getElementById("startloc").value == "")
+		return false;
+	else if(document.getElementById("endloc").value == "")
+		return false;
+	else
+		return true;
+}
+
+function charLimit(field, count, max) {
+	if(field.value.length > max) {
+		field.value = field.value.substring(0, max);
+	}
+	else {
+		count.value = max - field.value.length;
+	}
+}
