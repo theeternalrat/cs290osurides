@@ -22,7 +22,7 @@ include("db_init.php");
       }
       $result_rides_stmt->close();
   }else{
-    echo "SQL Prepare failed.;
+    echo "SQL Prepare failed.";
   }
   echo "</table>";
   ?>
