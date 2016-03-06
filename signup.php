@@ -8,6 +8,7 @@ include("_header.php");
 
 if(checkAuth(true) != ""){
 include("db_init.php");
+<<<<<<< HEAD
 
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){
@@ -27,6 +28,34 @@ include("db_init.php");
 		</script>
 		<?php
 	}
+=======
+//error flags:
+$nickErr = "";
+//vars
+$nickname = $bio = "";
+$nick = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$nickname = test_input($_POST["nickname"]);
+	if (!preg_match("/^[A-Za-z0-9_-]+$/", $nickname)){
+		$nickErr = "Only letters, numbers, underscores/dashes allowed";
+	}
+	if (empty($_POST["bio"])) {
+		$bio = "";
+	}
+	else {
+		$bio = test_input($_POST["bio"]);
+	}
+}
+
+//strips preceding/trailing whitespace/slashes + does htmlspecialchars
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+>>>>>>> eb1cadc76bc907f7dcccb4b9d58997f788724b49
 ?>
 
 <script type="text/javascript">
@@ -137,10 +166,6 @@ function validate() {
 		} else {
 			$uploadOk = 0;
 		}
-	// Check if file already exists
-	if (file_exists($final_dir)) {
-		$uploadOk = 0;
-	}
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
 		echo "Sorry, your file is too large.";
@@ -194,6 +219,12 @@ function validate() {
 		}
 		
 		$mysqli->close();
+		
+		?>
+		<script type="text/javascript">
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/my_profile.php";
+		</script>
+		<?php
 	}
 }
 	
