@@ -5,7 +5,7 @@
 	</div> 
 	<img src="imgs/filler.jpg" alt="example map" class="image">
 	<div><input type="button" class="do_things_button" onclick="location.href='browse.php';" value="Find a Ride" /></div>
-	<div><input type="button" class="do_things_button" onclick="location.href='my_profile.php';" value="Make a Ride" /></div>
+	<div><input type="button" class="do_things_button" onclick="location.href='start_carpool.php';" value="Make a Ride" /></div>
 <script type="text/javascript">
 	$(document).ready( function() {
 		document.getElementById("mainpage").className += "active";
