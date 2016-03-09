@@ -1,5 +1,8 @@
 <?php
 include("_header.php");
+
+if(checkAuth(true) != ""){
+
 include("db_init.php");
 echo "<h1>This is the browse page!</h1>";
 ?>
@@ -32,5 +35,6 @@ echo "<h1>This is the browse page!</h1>";
 	});
 </script>
 <?php
+}
 include("_footer.php");
 ?>

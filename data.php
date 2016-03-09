@@ -27,7 +27,7 @@ include("db_init.php");
 	}
 	
 function generateRandomString($length = 10) {
-    $characters = 'abcdefghijklmnopqrstuvwxyz';
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {
