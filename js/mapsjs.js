@@ -46,7 +46,12 @@ function initMap() {
 	//data: variables to be sent
 	success: function(json){
 		var list = document.getElementById("info");
+		try{
 		var obj = JSON.parse(json);
+		}catch(e){
+			console.log(e);
+			console.log(json);
+		}
 		var destLat = destinationMarker.place.location.lat();
 		var destLon = destinationMarker.place.location.lng();
 		
@@ -71,13 +76,19 @@ function initMap() {
 			return distA - distB;
 		});
 		
+		var geocoder = new google.maps.Geocoder;
 		for(i = 0; i < array.length; i++){
 			var locations = array[i][2].split(",");
-			var radio = makeRadioButton('dots', locations, array[i][0], locations);
+			var radio = makeRadioButton('dots', locations, array[i][0], locations, geocoder);
 			list.appendChild(radio);
 			var linebreak = document.createElement("br");
 			list.appendChild(linebreak);
 		}
+	},
+	error: function(idk, status, error){
+		console.log(idk);
+		console.log("Status: " + status);
+		console.log("Error: " + error);
 	}
   });
   });
@@ -85,7 +96,7 @@ function initMap() {
 }
 
 
-function makeRadioButton(name, value, text, endloc) {
+function makeRadioButton(name, value, text, endloc, geocoder) {
 
     var label = document.createElement("label");
     var radio = document.createElement("input");
@@ -96,9 +107,23 @@ function makeRadioButton(name, value, text, endloc) {
 	radio.onclick = function() {movePointer(endloc)};
 
     label.appendChild(radio);
-
-    label.appendChild(document.createTextNode(text));
+	var text = document.createTextNode("");
+	label.appendChild(text);
+	var addr = getName(geocoder, value, text);
+    
     return label;
+}
+
+function getName(geocoder, latlng, text){
+	var ll = {lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])};
+	var address;
+	geocoder.geocode({'location': ll}, function(results, status){
+		if(status == google.maps.GeocoderStatus.OK){
+			text.nodeValue = results[1].formatted_address;
+		} else {
+			text.nodeValue = "No address found.";
+		}
+	});
 }
 
 function movePointer(endloc){
