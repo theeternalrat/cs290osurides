@@ -17,9 +17,9 @@
 
 	if($data == 0){
 		?>
-		<!--<script type="text/javascript">
+		<script type="text/javascript">
 			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/signup.php";
-		></script> -->
+		</script>
 <?php
 	} else {
 		if($results = $mysqli->prepare("SELECT * FROM users WHERE onid_id=?")){

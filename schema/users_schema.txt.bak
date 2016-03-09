@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: oniddb
+<<<<<<< HEAD
 -- Generation Time: Feb 25, 2016 at 05:27 PM
+=======
+-- Generation Time: Feb 25, 2016 at 05:25 PM
+>>>>>>> eb1cadc76bc907f7dcccb4b9d58997f788724b49
 -- Server version: 5.5.47
 -- PHP Version: 5.2.6-1+lenny16
 
@@ -42,5 +46,9 @@ INSERT INTO `users` (`pk_id`, `onid_id`, `avatar_url_rel`, `name`, `nickname`, `
 (20, 'leian', 'imgs/leian.jpg', 'Lei, Anne Yuen', 'Annie', 'I''m me ', 'leian@oregonstate.edu', 0, 1, 0),
 (23, 'kollch', 'imgs/kollch.jpg', 'Koll, Charles D', 'adlfkj', 'asdlfj asdlfkj', 'kollch@oregonstate.edu', 0, 1, 0),
 (21, 'farnhamr', 'imgs/farnhamr.png', 'Farnham, Rebecca Rene', 'farnhamr', 'this is a bio wooooow', 'farnhamr@oregonstate.edu', 0, 3, 0),
+<<<<<<< HEAD
 (22, 'atkinsor', 'imgs/atkinsor.png', 'Atkinson, Ryan David', 'booradley', 'I am awesome!', 'atkinsor@oregonstate.edu', 0, 1, 0),
 (24, 'leian', 'imgs/leian.jpg', 'Lei, Anne Yuen', '!@#$%^&amp;*(', 'I''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjf I''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskdfjkjk kdfjksljfl jlksdjflksjflkj ksdjfkjfI''m unbearable asdffjskd', 'leian@oregonstate.edu', 0, 1, 0);
+=======
+(22, 'atkinsor', 'imgs/atkinsor.png', 'Atkinson, Ryan David', 'booradley', 'I am awesome!', 'atkinsor@oregonstate.edu', 0, 1, 0);
+>>>>>>> eb1cadc76bc907f7dcccb4b9d58997f788724b49

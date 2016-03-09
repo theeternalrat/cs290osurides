@@ -1,9 +1,29 @@
-	</div>
-	<div class="footer">
-		<p><h5>Im a footer</h5></p>
-		</body></html>
-	</div>
-</div>
-
+<html>
+<body>
+<footer>	
+	<ul>
+		<li>
+			<a href = "https://github.com/SamMorey"><img src="imgs/test.jpg" alt="Sam's GitHub" class= "sam"></a>
+		</li>
+		<li>
+			<a href = "https://github.com/kollch"><img src="imgs/github.svg" alt="Charles's GitHub" class= "team"></a>
+		</li>
+		<li>
+			<a href = "https://github.com/atkinson137"><img src="imgs/github.svg" alt="Ryan's GitHub" class= "team"></a>
+		</li>
+		<li>
+			<a href = "https://github.com/adpextwindong"><img src="imgs/github.svg" alt="George's GitHub" class= "team"></a>
+		</li>
+		<li>
+			<a href = "https://github.com/leian7"><img src="imgs/github.svg" alt="Anne's GitHub" class= "team"></a>
+		</li>
+		<li>
+			<a href = "#"><img src="imgs/github.svg" alt="Rebecca's GitHub" class= "team"></a>
+		</li>
+		<div>
+		<p>Copyright 2016 OSU Rides</p>
+		</div>
+</footer>
+</body></html>
 <?php
 ?>

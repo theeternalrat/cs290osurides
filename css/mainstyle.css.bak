@@ -21,24 +21,44 @@ h1 {
 
 .header {
 	width: 100%;
-	height: 4.76%;
+	height: 2em;
 }
 
 .content {
-	width: 100%;
+	width: 96%;
 	float: left;
-<<<<<<< HEAD
-	min-height: 29.76%;
-=======
 	min-height: 500px;
-	margin-left: 2em;
-	margin-right: 2em;
->>>>>>> feature/login
+	margin-left: 2%;
+	margin-right: 2%;
+<<<<<<< HEAD:css/mainstyle.css
+=======
+}
+
+section {
+    width: auto;
+    height: 200px;
+    background: aqua;
+    margin: 0;
+    padding: 10px;
+}
+
+#col1 {
+	width: 49.5%;
+    height: 200px;
+    background: red;
+    float: left;
+}
+
+#col2 {
+	margin-left: 50.5%;
+    height: 200px;
+    background: black;	
+>>>>>>> eb1cadc76bc907f7dcccb4b9d58997f788724b49:mainstyle.css
 }
 
 ul#navbar {
 	list-style-type: none;
-	margin-bottom: 1.19%;
+	margin-bottom: 0.5em;
 	margin-top: 0px;
 	padding: 0;
 	overflow: hidden;
@@ -100,26 +120,28 @@ p {
 	border-color: #ccc #ccc #cc5200 #ccc;
 }
 
-.login-filler {
-	margin: 0% 2%;
-	padding: 2% 4%;
+.do_things_button {
+	margin: 0% 2% 2% 2%;
+	padding: 0%;
+	width: 6.5em;
+	height: 2.5em;
 	background: #fff;
 	border-top: 0px;
 	border-right: 0px;
 	border-left: 0px;
 	border: 4px solid #ccc;
-	border-radius: 5%;
+	border-radius: 0.5em;
 	text-align: center;
 	font-size: 2em;
 	font-weight: bold;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
-.login-filler:hover {
+.do_things_button:hover {
 	border-color: #cc5200;
 }
 
-.filler-image {
+.image {
 	top: 10%;
 	right: 5.21%;
 	position: absolute;
@@ -131,26 +153,46 @@ p {
 }
 
 footer {
-	width: 100%;
-	height: 1.79%;
 	position: absolute;
-	top: -0.48%;
-	text-align: center;
+	left: 0;
+	bottom: 0;
+	height: 6.5%;
+	width: 100%;
+	overflow:hidden;
 	font-family: "Arial Black", Helvetica, sans-serif;
-	background-color: white;
+}
+footer ul {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
 }
 
-a.team {
+footer ul li {
 	display: inline-block;
-	text-indent: -9999px;
-	margin-left: 0.26%;
-	width: 1.56%;
-	height: 1.79%;
-	background-size: 1.56% 1.79%;
-	opacity: .5;
-	transition: all .25s;
 }
 
-a.github {
-	background-image:
+.team {
+	width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all .5s;
+	opacity: .5;
+}
+.team:hover {
+	opacity: 1;
+}
+
+.sam {
+	width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all .5s;
+	opacity: .5;
+}
+.sam:hover {
+	opacity: 1;
+	transform: scale(1.5) rotate(1440deg);
 }
