@@ -19,7 +19,7 @@
 			<a href = "#"><img src="imgs/github.svg" alt="Rebecca's GitHub" class= "team"></a>
 		</li>
 		<div>
-		<p>Copyright 2016 OSU Rides</p>
+		<p> ©2016 OSU Rides</p>
 		</div>
 </footer>
 </body></html>
