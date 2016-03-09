@@ -1,7 +1,7 @@
 <footer>	
 	<ul>
 		<li>
-			<a href = "https://github.com/SamMorey"><img src="imgs/test.jpg" alt="Sam's Git Hub" class= "sam"></a>
+			<a href = "https://github.com/SamMorey"><img src="imgs/test.jpg" alt="Sam's Git Hub" class= "team"></a>
 		</li>
 		<li>
 			<a href = "https://github.com/kollch"><img src="imgs/github.svg" alt="Charle's Git Hub" class= "team"></a>
