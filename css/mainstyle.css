@@ -159,3 +159,66 @@ footer ul li {
 .team:hover {
 	opacity: 1;
 }
+
+.signup {
+	margin: 3% 6% 10% 11%;
+	padding: 2%;
+	max-width: 70%;
+	text-align: left;
+	background: #fff;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 4px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+.buttonl {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0.5em;
+	float: center;
+	display: block;
+	text-align: center;
+	color: white;
+	background: #cc5200;
+	border-radius: 11%;
+  border: 2px solid white;
+}
+
+.buttonl:hover {
+	background-color: #000000;
+}
+
+.makecpool {
+	margin: 3% 6% 10% 11%;
+	padding: 2%;
+	max-width: 100%;
+	max-height: 80%;
+	text-align: left;
+	background: #fff;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 4px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+.allignr {
+	float: right;
+}
+
+.allignl {
+	float: left;
+}
+
+.button {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0.5em;
+	display: block;
+	color: white;
+	background: #cc5200;
+	border-radius: 11%;
+  border: 2px solid #db7836;
+}
+
+.button:hover {
+	background-color: #db7836;
+}
