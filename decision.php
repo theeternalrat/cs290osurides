@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 <h1>Saving your decision...</h1>
 
 <?php
-print_r($_REQUEST);
+//print_r($_REQUEST);
 
 if (isset($_POST["app_id"])) {
 	$app_id = $_POST["app_id"];//$_POST["recommend"]
