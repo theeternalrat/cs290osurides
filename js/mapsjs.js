@@ -68,8 +68,8 @@ function initMap() {
 		});
 		
 		array.sort(function(a,b){
-			var loca = a[2].split(",");
-			var locb = b[2].split(",");
+			var loca = a[3].split(",");
+			var locb = b[3].split(",");
 			
 			var distA = getDist(destLat, destLon, parseFloat(loca[0]), parseFloat(loca[1]));
 			var distB = getDist(destLat, destLon, parseFloat(locb[0]), parseFloat(locb[1]));
@@ -78,8 +78,8 @@ function initMap() {
 		
 		var geocoder = new google.maps.Geocoder;
 		for(i = 0; i < array.length; i++){
-			var locations = array[i][2].split(",");
-			var radio = makeRadioButton('dots', locations, array[i][0], locations, geocoder);
+			var locations = array[i][3].split(",");
+			var radio = makeRadioButton('dots', locations, array[i][0], locations, geocoder, array[i][1], array[i][4]);
 			list.appendChild(radio);
 			var linebreak = document.createElement("br");
 			list.appendChild(linebreak);
@@ -96,7 +96,7 @@ function initMap() {
 }
 
 
-function makeRadioButton(name, value, text, endloc, geocoder) {
+function makeRadioButton(name, value, text, endloc, geocoder, userName, date) {
 
     var label = document.createElement("label");
     var radio = document.createElement("input");
@@ -109,17 +109,17 @@ function makeRadioButton(name, value, text, endloc, geocoder) {
     label.appendChild(radio);
 	var text = document.createTextNode("");
 	label.appendChild(text);
-	var addr = getName(geocoder, value, text);
+	var addr = getName(geocoder, value, text, userName, date);
     
     return label;
 }
 
-function getName(geocoder, latlng, text){
+function getName(geocoder, latlng, text, userName, date){
 	var ll = {lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])};
 	var address;
 	geocoder.geocode({'location': ll}, function(results, status){
 		if(status == google.maps.GeocoderStatus.OK){
-			text.nodeValue = results[1].formatted_address;
+			text.nodeValue = "User: " + userName + " Leave Date: " + date + " Location: " + results[1].formatted_address;
 		} else {
 			text.nodeValue = "No address found.";
 		}
