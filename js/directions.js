@@ -54,14 +54,59 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     });
   }
   
-function validateForm(){
-	if(document.getElementById("startloc").value == "")
+ function validateForm(){
+	 //check if they entered start/end loc
+	if(document.getElementById("startloc").value == "") {
+		alert("Please submit your starting and ending locations before continuing with the rest of the form.");
 		return false;
-	else if(document.getElementById("endloc").value == "")
+ }
+	else if(document.getElementById("endloc").value == "") {
+		alert("Please submit your starting and ending locations before continuing with the rest of the form.");
 		return false;
-	else
-		return true;
-}
+	}
+	
+	//check leave date
+	var date = /^(\d{4})\-(\d{2})\-(\d{2})$/;
+	//check if they entered the right format
+	if(!date.test(document.carpool.leave_date.value)) {
+		document.getElementById("errors").innerHTML=" *Date must be in YYYY-MM-DD format. Enter 0s as necessary.";
+		return false;
+	}
+	//bounds checking
+	else {
+		str = document.carpool.leave_date.value;
+		year = str[0] + str[1] + str[2] + str[3];
+		month = str[5] + str[6];
+		day = str[8] + str[9];
+		today = new Date();
+		upper = today.getFullYear() + 4;
+		if (year < today.getFullYear() || year > upper) {
+			document.getElementById("errors").innerHTML=" *Year must be between " + today.getFullYear() + " and " + upper + ".";
+			return false;
+		}
+		if (month < 1 || month > 12) {
+				document.getElementById("errors").innerHTML=" *Month must be between 01 and 12.";
+				return false;
+			}
+		if (day < 1 || day > 31) {
+				document.getElementById("errors").innerHTML=" *Day must be between 01 and 31.";
+				return false;
+			}
+		else if (year == today.getFullYear()) {
+			if (month < today.getMonth() + 1) {
+				document.getElementById("errors").innerHTML=" *That month has already passed.";
+				return false;
+			}
+			else if (month == today.getMonth() + 1) {
+				if (day < today.getDate()) {
+					document.getElementById("errors").innerHTML=" *That day has already passed.";
+					return false;
+				}
+			}
+		}
+	} 
+	return true;
+} 
 
 function charLimit(field, count, max) {
 	if(field.value.length > max) {
