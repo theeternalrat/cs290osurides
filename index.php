@@ -1,6 +1,6 @@
 <?php include("_header.php"); ?>
 	<div class="info">
-		<h1 style="font-family: Arial, Helvetica, sans-serif;">OSU Rides</h1>
+		<h1>OSU Rides</h1>
 		<p>We are a team of student programmers currently working on completing a website for our CS 290 course. Our group consists of: Ryan Atkinson, Samuel Morey, Takumi Crary, Rebecca Farnham, Charles Koll, and Annie Lei. We hope you enjoy our site!</p>
 	</div> 
 	<img src="imgs/filler.jpg" alt="example map" class="image">
