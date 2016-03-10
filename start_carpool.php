@@ -1,5 +1,6 @@
 <?php include("_header.php");
 if (checkAuth(true) != "") {
+include("set_session.php");
 ?>
 <style>
 #errors {color: #FF0000;}

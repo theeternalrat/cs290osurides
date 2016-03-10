@@ -142,8 +142,20 @@ function statusCheck() {
 	}
 	echo $_POST["comments"];
 	echo "<br><br>";
-	*/
 	
+	?> <div id="posts"><ul> <?php
+	if($stmt = $mysqli->prepare("SELECT carpool_id, end, FROM `rides` where carpool_creator=?")){
+		$stmt->bind_param("i", $_SESSION["uid"]);
+		$stmt->execute();
+		$stmt->bind_result($cid, $end);
+		while($stmt->fetch()){
+			echo "<li><label><a href='http://web.engr.oregonstate.edu/~atkinsor/listing.php?id=". $cid ."'>".$end."</a></label></li>";
+		}
+		$stmt->close();
+	}
+	
+	?> </ul></div> <?php
+	*/
 	$mysqli->close();
 ?>
 

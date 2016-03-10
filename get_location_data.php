@@ -1,6 +1,6 @@
 <?php
 include("db_init.php");
-	$sqls = "SELECT carpool_id, carpool_creator, creator_onid, startlocation, endlocation, leave_date, description, start, end FROM rides WHERE (open_to_passengers = 1 AND leave_date > CURDATE()) LIMIT 1000";
+	$sqls = "SELECT carpool_id, carpool_creator, creator_onid, startlocation, endlocation, leave_date, description, start, end FROM rides WHERE (open_to_passengers = 1 AND leave_date > CURDATE())";
 	if($results = $mysqli->prepare($sqls)){
 		$results->execute();
 		

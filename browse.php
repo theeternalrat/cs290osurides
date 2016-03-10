@@ -4,6 +4,7 @@ include("_header.php");
 if(checkAuth(true) != ""){
 
 include("db_init.php");
+include("set_session.php");
 ?>
 
 <h1>Search for a Carpool</h1>

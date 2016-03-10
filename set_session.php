@@ -1,7 +1,7 @@
 <?php
 require_once("db_init.php");
 
-if(!isset($_SESSION["uid"])){
+
 			$sql = "SELECT pk_id FROM `users` WHERE onid_id=?";
 			if($stmt = $mysqli->prepare($sql)){
 				$stmt->bind_param("s", $_SESSION["onidid"]);
@@ -12,4 +12,3 @@ if(!isset($_SESSION["uid"])){
 				
 				$_SESSION["uid"] = $uid;
 			}
-}
