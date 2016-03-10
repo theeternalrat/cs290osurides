@@ -6,6 +6,7 @@ include("db_init.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+include("set_session.php");
 ?>
 
 <h1>Saving your submission...</h1>
