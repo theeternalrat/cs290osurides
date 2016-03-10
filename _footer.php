@@ -1,3 +1,4 @@
+</div>
 <footer>	
 	<ul>
 		<li>
