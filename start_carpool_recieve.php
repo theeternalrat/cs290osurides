@@ -9,6 +9,10 @@ error_reporting(E_ALL);
 <h1>Saving your submission...</h1>
 
 <?php
+
+//TODO SET THIS AS SESSION[$uid] once thats implemented.
+$uid = 1;
+
 //print_r($_REQUEST);
 
 if (isset($_POST["details"])) {
@@ -41,7 +45,20 @@ if ($all_fields_set) {
 		$stmt->execute();
 		$stmt->close();
 		echo '<p>Created...';
-	} else { 
+
+		$carpool_id = mysql_insert_id();
+		if(carpool_id){
+			if($passenger_stmt = $mysqli->prepare("INSERT into passengers values (?,?)")){
+				$passenger_stmt->bind_param("ii",$carpool_id, $carpool_creator);
+				$passenger_stmt->execute();
+				$passenger_stmt->close();
+			}else{
+				echo 'insert into passengers failed';
+			}
+		}else{
+			echo 'mysql_insert_id() failed';
+		}
+	} else {
 		printf("Error: %s\n", $mysqli->error);
 	}
 
