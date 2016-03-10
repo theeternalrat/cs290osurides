@@ -1,5 +1,7 @@
 <?php
 include("_header.php");
+if(checkAuth(true) != ""){
+
 include("db_init.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -23,23 +25,23 @@ if (isset($_POST["details"])) {
 
 $all_fields_set = isset($_POST["carpool_creator"])  &&
                   isset($_POST["leave_date"])       &&
-                  isset($_POST["startlocation"])         &&
-                  isset($_POST["endlocation"]) ? true : false;
+                  isset($_POST["startlocation"])    &&
+                  isset($_POST["endlocation"]) 			? true : false;
 
 
 if ($all_fields_set) {
 
   $carpool_creator  = $_POST["carpool_creator"];
   $leave_date       = $_POST["leave_date"];
-  $startloc			= $_POST["startlocation"];
-  $endloc			= $_POST["endlocation"];
-  $descrip 			= $_POST["descrip"];
+  $startloc					= $_POST["startlocation"];
+  $endloc						= $_POST["endlocation"];
+  $details 					= $_POST["details"];
 
 
   echo $leave_date;
 
 	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, startlocation, endlocation, open_to_passengers, details) values(?,?,?,?,true,?)")) {
-		$stmt->bind_param("issss", $carpool_creator, $leave_date, $startloc, $endloc, $descrip);
+		$stmt->bind_param("issss", $carpool_creator, $leave_date, $startloc, $endloc, $details);
 		$stmt->execute();
 		$stmt->close();
 		$carpool_id = mysql_insert_id();
@@ -72,5 +74,7 @@ if ($all_fields_set) {
 
 <?php
 mysqli_close($mysqli);
+
+}
 include("_footer.php");
 ?>

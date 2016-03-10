@@ -1,4 +1,7 @@
-<?php include("_header.php");?>
+<?php include("_header.php");
+if(checkAuth(true) != ""){
+
+?>
 <html>
 <head>
 <style>
@@ -33,15 +36,10 @@
 		<br><input readonly type="text" name="countdown" value="500"> characters left
 		<li><input class="button" type=submit>
 		</ul>
-		Description:<br>
-			<textarea rows="4" cols="50" placeholder="Enter a bit about your trip." name="descrip" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
-			onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"></textarea><br>
-		<input type="text" name="startlocation" id="startloc" hidden novalidate>
-		<input type="text" name="endlocation" id="endloc" hidden novalidate>
-		<input type="text" name="startlocationstring" id="startlocs" hidden novalidate>
-		<input type="text" name="endlocationstring" id="endlocs" hidden novalidate>
-		<input class="button" type=submit>
 		</form>
-	</div>	
+	</div>
 </div>
-<?php include("_footer.php");?>
+<?php
+}
+include("_footer.php");
+?>

@@ -6,9 +6,6 @@ if(checkAuth(true) != ""){
 include("db_init.php");
 include("crud_tools.php");
 
-//TODO ADD PASSENGER VIEW FOR SEEING WHOS IN THE CARPOOL
-//TODO ADD/FINISH Carpool applicant approval view for admin
-
 function isPassenger($mysqli, $carpool_id, $uid){
   $retVal = false;
   if($passenger_check_stmt = $mysqli->prepare("select * from passengers WHERE ride_id_fk = ? AND user_id_fk = ?")){
@@ -34,12 +31,7 @@ function isPassenger($mysqli, $carpool_id, $uid){
 <div id=listing_info>
 
   <?php
-  //TODO SET UID FROM SESSION HERE
-  $uid = 1;
-
-  if (isset($_GET["debugUID"])) {
-    $debugUID = $_GET["debugUID"];//$_POST["recommend"]
-  }
+  $uid = $_SESSION["uid"];
 
   if (isset($_GET["id"])) {
     $id = $_GET["id"];//$_POST["recommend"]
@@ -48,7 +40,7 @@ function isPassenger($mysqli, $carpool_id, $uid){
     $id = 1;
   }
 
-  if ($results_users_stmt = $mysqli->prepare("select carpool_id, carpool_creator, leave_date , created_date, from_lat , from_long , destination_lat, destination_long, details, open_to_passengers FROM rides WHERE carpool_id = ?")) {
+  if ($results_users_stmt = $mysqli->prepare("select * FROM rides WHERE carpool_id = ?")) {
 
     $results_users_stmt->bind_param("i", $id);
   	$results_users_stmt->execute();
@@ -63,14 +55,10 @@ function isPassenger($mysqli, $carpool_id, $uid){
     $carpool_creator    = $obj->carpool_creator;
     $leave_date         = $obj->leave_date;
     $created_date       = $obj->created_date;
-    $from_lat           = $obj->from_lat;
-    $from_long          = $obj->from_long;
-    $destination_lat    = $obj->destination_lat;
-    $destination_long   = $obj->destination_long;
-    $details            = $obj->details;
+    $startlocation      = $obj->startlocation;
+    $endlocation        = $obj->endlocation;
+    $details            = $obj->description;
     $open_to_passengers = $obj->open_to_passengers;
-
-
 
     ?>
     <ol>
@@ -78,10 +66,8 @@ function isPassenger($mysqli, $carpool_id, $uid){
       <li><?php crud_dispdiv_create('carpool_creator','Creator',$carpool_creator);?></li>
       <li><?php crud_dispdiv_create('carpool_leave_date','Leave Date',$leave_date);?></li>
       <li><?php crud_dispdiv_create('carpool_created_date','Created Date',$created_date);?></li>
-      <li><?php crud_dispdiv_create('carpool_from_lat','From Latitude',$from_lat);?></li>
-      <li><?php crud_dispdiv_create('carpool_from_long','From Longitude',$from_long);?></li>
-      <li><?php crud_dispdiv_create('carpool_destination_lat','Destination Latitude',$destination_lat); ?></li>
-      <li><?php crud_dispdiv_create('carpool_destination_long','Destination Longitude',$destination_long); ?></li>
+      <li><?php crud_dispdiv_create('carpool_start_location','Start Location',$startlocation); ?></li>
+      <li><?php crud_dispdiv_create('carpool_end_location','End Location',$endlocation); ?></li>
       <li><?php crud_dispdiv_create('carpool_details','Details',$details); ?></li>
       <li><?php crud_dispdiv_create('carpool_open_to_passengers','Open To Passengers',$open_to_passengers); ?></li>
     </ol>
@@ -98,28 +84,13 @@ function isPassenger($mysqli, $carpool_id, $uid){
 </div>
 
   <?php
-    echo 'DEBUG debugUID cases: 1 == passenger (only sees passengers), 2 == admin (sees passengers, can accept people), 3 == no privledge user. can only apply';
-  //TODO implement session user_id usage
-  //TODO REMOVE DEBUG VARS
-  //TODO REMOVE DEBUG WHEN MERGING INTO MASTER
-  //TODO TEST THESE CASES WITH UID SET AT TOP
-
-
   //isPassenger($mysqli, $carpool_id, $uid) === true
   //TODONOW REMOVE DEBUGUID
-
-  //$debugUID == 1 || $debugUID == 2 ||
 
   if (isset($_GET["id"])) {
   	$carpool_id = $_GET["id"];
   } else {
   	echo "No carpool id provided";
-  }
-
-  if (isset($_GET["debugUID"])) {
-  	$debugUID = $_GET["debugUID"];
-  } else {
-  	echo "No debugUID provided";
   }
 
   if(isPassenger($mysqli, $carpool_id, $uid) === true){//PASSENGER CASE
@@ -148,7 +119,6 @@ function isPassenger($mysqli, $carpool_id, $uid){
     echo '</table>';
     echo '</div>';
 
-    //TODO NOW FINISH THIS
     //$uid === $carpool_creator
     if($uid === $carpool_creator){//ADMIN SUBCASE
       ?>
