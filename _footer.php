@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 <footer>	
 	<ul>
 		<li>
 			<a href = "https://github.com/SamMorey"><img src="imgs/fly_sam.jpg" alt="Sam's GitHub" class= "team"></a>
-=======
-<footer>
-	<ul>
-		<li>
-			<a href = "https://github.com/SamMorey"><img src="imgs/fly_sam.jpg" alt="Sam's GitHub" class="team"></a>
->>>>>>> develop
 		</li>
 		<li>
 			<a href = "https://github.com/kollch"><img src="imgs/github.svg" alt="Charles's GitHub" class="team"></a>
@@ -23,17 +16,10 @@
 			<a href = "https://github.com/leian7"><img src="imgs/github.svg" alt="Anne's GitHub" class="team"></a>
 		</li>
 		<li>
-<<<<<<< HEAD
 			<a href = "https://github.com/farnhamr"><img src="imgs/github.svg" alt="Rebecca's GitHub" class= "team"></a>
 		</li>
 		<div>
 		<p> ©2016 OSU Rides</p>
-=======
-			<a href = "https://github.com/farnhamr"><img src="imgs/github.svg" alt="Rebecca's GitHub" class="team"></a>
-		</li>
-		<div>
-		<p>©2016 OSU Rides</p>
->>>>>>> develop
 		</div>
 </footer>
 </body></html>
