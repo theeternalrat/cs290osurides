@@ -1,12 +1,11 @@
 <?php include("_header.php");?>
-<html>
-<head>
 <style>
 #errors {color: #FF0000;}
 </style>
-
-<script src="http://web.engr.oregonstate.edu/~atkinsor/js/directions.js"></script>
 <link rel="stylesheet" type="text/css" href="css/browsestyle.css">
+<script src="http://web.engr.oregonstate.edu/~atkinsor/js/directions.js">
+</script>
+
 <h1>Start a new carpool</h1>
 
  <div>
@@ -15,13 +14,13 @@
       <input type="submit" id="submit" value="Get Directions">  
     </div>
 
-<form method="post" name="carpool" action='start_carpool_recieve.php' class="inform" onsubmit="return validateForm()">
+<form method="post" name="carpool" action='start_carpool_recieve.php' class="inform" onsubmit="return validateForm();">
     <div id="map" style="margin:10px; height: 50%; width:50%;"></div>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBec-tg3yBpOcZzd4ino_TbWGXh4PcaC54&libraries=places&sign_in=true&callback=initMap"
         async defer></script>
 <ul>
 <li><label>Carpool Creator ID:</label> <input type="number" name="carpool_creator" oninput="validity.valid||(value='');" min=0 required>
-<li><label>Leave date:</label> <input type="text" name="leave_date" placeholder="MM-DD-YYYY" required>
+<li><label>Leave date:</label> <input type="text" name="leave_date" placeholder="YYYY-MM-DD" required>
 <span id="errors">
 </span>
 <li><label>Origin Latitude:</label> <input type="number" name="from_lat" required>
