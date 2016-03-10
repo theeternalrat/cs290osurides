@@ -5,6 +5,7 @@ if(checkAuth(true) != ""){
 
 include("db_init.php");
 include("crud_tools.php");
+include("set_session.php");
 
 function isPassenger($mysqli, $carpool_id, $uid){
   $retVal = false;
@@ -21,6 +22,8 @@ function isPassenger($mysqli, $carpool_id, $uid){
     }
 
     $passenger_check_stmt->close();
+	
+	return $retVal;
 
   }else{
     echo 'Passenger check stmt failed';
@@ -116,7 +119,7 @@ function isPassenger($mysqli, $carpool_id, $uid){
     echo '</div>';
 
     //$uid === $carpool_creator
-    if($uid === $carpool_creator){//ADMIN SUBCASE
+    if($uid == $carpool_creator){//ADMIN SUBCASE
       ?>
       <div id=applicant_review_interface>
         <div id=applicants>
@@ -173,8 +176,8 @@ function isPassenger($mysqli, $carpool_id, $uid){
       <ul>
         <li><label>Application Description:<br></label> <textarea name="description" rows="4" cols="50" onKeyDown="charLimit(this.form.description, this.form.countdown, 1000);" onKeyUp="charLimit(this.form.description, this.form.countdown, 1000);" placeholder="Enter application description."></textarea>
         <br><input readonly type="text" name="countdown" value="1000"> characters left
-        <br><input type=number name="ride_id" value=<?php echo $id; ?>
-        <br><input type=number name="uid" value=<?php echo $uid; ?>
+        <br><input type=number name="ride_id" hidden value=<?php echo $id; ?>
+        <br><input type=number name="uid" hidden value=<?php echo $uid; ?>
         <li><input type=submit name="Submit application">
       </ul>
       </form>

@@ -37,7 +37,7 @@ if ($all_fields_set) {
 		$stmt->bind_param("isssssss", $carpool_creator, $onid, $leave_date, $startloc, $endloc, $descrip, $start, $end);
 		$stmt->execute();
 		$stmt->close();
-		$carpool_id = mysql_insert_id();
+		$carpool_id = $mysqli->insert_id;
 		echo '<p>Created. Ride ID = '.$carpool_id;
 
 //TODOFUTURE MOVE ALL SQL TO DAO's
