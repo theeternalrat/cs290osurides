@@ -149,7 +149,7 @@ function movePointer(id, endloc){
 			var nameTextDriver = document.createTextNode(json["creator_onid"]);
 			var nameText = document.createTextNode("Driver: ");
 			nameLabel.appendChild(nameText);
-			link.title = nameTextDriver;
+			link.title = json["creator_onid"];
 			link.appendChild(nameTextDriver);
 			link.href="user.php?q=" + json["carpool_creator"]; 
 			nameLabel.appendChild(link);
@@ -174,6 +174,16 @@ function movePointer(id, endloc){
 			var endText = document.createTextNode("End Location: " + json["end"]);
 			endLabel.appendChild(endText);
 			list.appendChild(endLabel);
+			//Link to listing
+			var listingLabel = document.createElement("li");
+			var listinglink = document.createElement("a");
+			var listingText = document.createTextNode("View Listing");
+			listingLabel.appendChild(listingText);
+			listinglink.title = "View Listing";
+			listinglink.href = "listing.php?id="+json["carpool_id"];
+			listinglink.appendChild(listingText);
+			listingLabel.appendChild(listinglink);
+			list.appendChild(listingLabel);
 		}	
 	});
 	
