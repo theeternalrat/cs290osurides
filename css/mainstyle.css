@@ -123,19 +123,19 @@ p {
 	right: 5%;
 	position: absolute;
 	z-index: -1;
-	width: 65%;
+	width: 60%;
 	height: auto;
-	border-radius: 0.36%;
-	border: 3px solid white;
+	border-radius: 0.5em;
+	border: 1px solid #ccc;
 }
 
 footer {
-/*	position: absolute;
+	position: absolute;
 	left: 0;
 	bottom: 0;
-	height: 6.5%;
+	height: 12%;
 	width: 100%;
-	overflow:hidden;*/
+	overflow:hidden;
 	font-family: Arial, Helvetica, sans-serif;
 }
 footer ul {
@@ -150,8 +150,8 @@ footer ul li {
 }
 
 .team {
-	width: 45px;
-	height: 45px;
+	width: 2em;
+	height: 2em;
 	border-radius: 50%;
 	border: 2px solid white;
 	transition: all .5s;
