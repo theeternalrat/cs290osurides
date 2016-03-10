@@ -1,0 +1,84 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.4
+-- http://www.phpmyadmin.net
+--
+-- Host: oniddb
+-- Generation Time: Mar 10, 2016 at 01:42 AM
+-- Server version: 5.5.47
+-- PHP Version: 5.2.6-1+lenny16
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `atkinsor-db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passengers`
+--
+
+CREATE TABLE IF NOT EXISTS `passengers` (
+  `ride_id_fk` int(11) NOT NULL,
+  `user_id_fk` int(11) NOT NULL,
+  KEY `user_id_fk` (`user_id_fk`),
+  KEY `ride_id_fk` (`ride_id_fk`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `pk_id` int(11) DEFAULT NULL,
+  `driver_enum` enum('DRIVER','PASSENGER') DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  `recommend` tinyint(1) NOT NULL DEFAULT '0',
+  `description` longtext,
+  KEY `reviews_fk1` (`pk_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rides`
+--
+
+CREATE TABLE IF NOT EXISTS `rides` (
+  `carpool_id` int(11) NOT NULL AUTO_INCREMENT,
+  `carpool_creator` int(11) NOT NULL,
+  `creator_onid` varchar(20) NOT NULL,
+  `leave_date` datetime DEFAULT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `startlocation` varchar(22) NOT NULL,
+  `endlocation` varchar(22) NOT NULL,
+  `open_to_passengers` tinyint(1) NOT NULL DEFAULT '0',
+  `description` varchar(1000) NOT NULL,
+  `start` varchar(100) NOT NULL,
+  `end` varchar(100) NOT NULL,
+  PRIMARY KEY (`carpool_id`),
+  KEY `carpool_creator` (`carpool_creator`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `pk_id` int(11) NOT NULL AUTO_INCREMENT,
+  `onid_id` varchar(64) DEFAULT NULL,
+  `avatar_url_rel` text,
+  `name` varchar(64) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `bio` longtext,
+  `email` varchar(64) NOT NULL,
+  `status` int(1) NOT NULL,
+  `seats` int(2) NOT NULL,
+  `raiting` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pk_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1031 ;

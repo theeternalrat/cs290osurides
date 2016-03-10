@@ -2,6 +2,22 @@
 
 session_start();
 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // last request was more than 30 minutes ago
+    	header("Location: http://web.engr.oregonstate.edu/~atkinsor/logout.php"); /* Redirect browser */
+	exit();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+if (!isset($_SESSION['CREATED'])) {
+    $_SESSION['CREATED'] = time();
+} else if (time() - $_SESSION['CREATED'] > 1800) {
+    // session started more than 30 minutes ago
+    session_regenerate_id(true);    // change session ID for the current session and invalidate old session ID
+    $_SESSION['CREATED'] = time();  // update creation time
+}
+
+//include("db_init.php");
+
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
 
@@ -24,12 +40,27 @@ function checkAuth($doRedirect) {
 		if ($matches && count($matches) > 1) {
 			$onidid = $matches[1];
 			$_SESSION["onidid"] = $onidid;
+			
+			/*
+			$sql = "SELECT pk_id FROM `users` WHERE onid_id=?";
+			if($stmt = $mysqli->prepare($sql)){
+				$stmt->bind_param("s", $onidid);
+				$stmt->execute();
+				$stmt->bind_result($uid);
+				$stmt->fetch();
+				$stmt->close();
+				
+				$_SESSION["uid"] = $uid;
+			}
+			*/
+			
 			return $onidid;
 		} 
 	} else if ($doRedirect) {
 		$url = "https://login.oregonstate.edu/cas/login?service=".$pageURL;
 		echo "<script>location.replace('" . $url . "');</script>";
 	} 
+	
 	return "";
 }
 

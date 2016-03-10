@@ -1,0 +1,24 @@
+--
+-- Table structure for table `rides`
+--
+
+CREATE TABLE IF NOT EXISTS `rides` (
+  `carpool_id` int(11) NOT NULL,
+  `carpool_creator` int(11) NOT NULL,
+  `leave_date` datetime NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `from_lat` float NOT NULL,
+  `from_long` float NOT NULL,
+  `destination_lat` float NOT NULL,
+  `destination_long` float NOT NULL,
+  `details` varchar(500) NOT NULL,
+  `open_to_passengers` tinyint(1) NOT NULL,
+  PRIMARY KEY (`carpool_id`),
+  KEY `carpool_creator` (`carpool_creator`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for table `rides`
+--
+ALTER TABLE `rides`
+  ADD CONSTRAINT `rides_ibfk_1` FOREIGN KEY (`carpool_creator`) REFERENCES `users` (`pk_id`);

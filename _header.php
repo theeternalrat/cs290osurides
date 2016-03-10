@@ -3,7 +3,7 @@
 <html><head>
 	<title>OSU Rides</title>
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="mainstyle.css">
+		<link rel="stylesheet" type="text/css" href="css/mainstyle.css">
 
 	</head><body>
 	<div id="container">
@@ -20,4 +20,5 @@
 				<li id="mainpage"><a href="index.php" >Home</a></li>
 			</ul>
 		</div>
+		<div class="content">
 		<div class="content">

@@ -5,6 +5,8 @@
 </html>
 <?php
 include("_header.php");
+
+if(checkAuth(true) != ""){
 include("db_init.php");
 
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
@@ -56,35 +58,35 @@ function validate() {
 	}
 }
 </script>	
-
 <h1>Signup!</h1>
-<h3>You do not yet have an account. Please fill in the information below and click 'Continue'</h3>
-<p>User Information:</p>
-<form action="signup.php" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validate();">
-	Nickname: <input autofocus required type="text" name="nickname" maxlength="40">
-	<span id="errors">
-	</span>
-	<br>I would like to be a: <br>
-	<input type="radio" name="status" value="Driver" onclick="javascript:statusCheck();" id="driverCheck" required>Driver<br>
-	<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
-	<input type="radio" name="status" value="Either" onclick="javascript:statusCheck();" id="eitherCheck">Either<br>
-		<div id="ifDriver" style="visibility:hidden">
-	Seats available (not including you): <select name="seats">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option value="8">8</option>
-		<option value="9">9</option>
-		<option value=">=10">10+</option>
-	</select>
-	</div>
-	Upload a profile picture: <br>
-	<input type="file" name="fileToUpload" id="fileToUpload" onchange="previewFile()"><br>
-	<img src="" height="200" alt="Image preview...">
+<div class="signup">
+	<h3 style="font-family: Arial, Helvetica, sans-serif;">You do not yet have an account. Please fill in the information below and click 'Continue'</h3>
+	<p>User Information:</p>
+	<form action="signup.php" method="POST" enctype="multipart/form-data" name="myForm" onsubmit="return validate();">
+		Nickname: <input autofocus required type="text" name="nickname" maxlength="40">
+		<span id="errors">
+		</span>
+		<br>I would like to be a: <br>
+		<input type="radio" name="status" value="Driver" onclick="javascript:statusCheck();" id="driverCheck" required>Driver<br>
+		<input type="radio" name="status" value="Passenger" onclick="javascript:statusCheck();" id="passCheck">Passenger<br>
+		<input type="radio" name="status" value="Either" onclick="javascript:statusCheck();" id="eitherCheck">Either<br>
+			<div id="ifDriver" style="visibility:hidden">
+		Seats available (not including you): <select name="seats">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value=">=10">10+</option>
+		</select>
+		</div>
+		Upload a profile picture: <br>
+		<input type="file" name="fileToUpload" id="fileToUpload" onchange="previewFile()"><br>
+		<img src="" height="200" alt="Image preview...">
 
 	<script>
 	function previewFile(){
@@ -104,18 +106,18 @@ function validate() {
 	}
 	previewFile();  //calls the function named previewFile()
 	</script>
-	<br>
-	Bio:<br>
-	<textarea rows="4" cols="50" placeholder="Enter a bit about yourself." name="bio" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
-	onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"></textarea>
-	<br>
-	<input readonly type="text" name="countdown" value="1000"> characters left
-	<br>
-	<input type="checkbox" name="emailterms" value="eterms" required> I agree to let OSURides access my OSU provided information and use my OSU email for alerts.
-	<br>
-	<input type="submit" name="continue" value="Continue">	
-</form>
-
+		<br>
+		Bio:<br>
+		<textarea rows="4" cols="50" placeholder="Enter a bit about yourself." name="bio" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
+		onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"></textarea>
+		<br>
+		<input readonly type="text" name="countdown" value="1000"> characters left
+		<br>
+		<input type="checkbox" name="emailterms" value="eterms" required> I agree to let OSURides access my OSU provided information and use my OSU email for alerts.
+		<br>
+		<input class="buttonl" type="submit" name="continue" value="Continue">	
+	</form>
+</div>
 <?php
 
 	if(isset($_POST["continue"])){
@@ -193,6 +195,7 @@ function validate() {
 		
 		$mysqli->close();
 	}
+}
 	
 include("_footer.php");
 ?>
