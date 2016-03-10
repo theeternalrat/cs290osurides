@@ -4,9 +4,10 @@ include("_header.php");
 if(checkAuth(true) != ""){
 
 include("db_init.php");
-echo "<h1>This is the browse page!</h1>";
 ?>
 
+<h1>Search for a Carpool</h1>"
+ 
 <link rel="stylesheet" type="text/css" href="css/browsestyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <script src="http://web.engr.oregonstate.edu/~atkinsor/js/mapsjs.js"></script>

@@ -124,6 +124,21 @@ p {
 	right: 5.21%;
 	position: absolute;
 	z-index: -1;
+<<<<<<< HEAD
+	width: 65.00%;
+	height: auto;
+	border-radius: 0.36%;
+	border: 3px solid white;
+}
+
+footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 6.5%;
+	width: 100%;
+	overflow:hidden;
+=======
 	width: 60%;
 	height: auto;
 	border-radius: 0.5em;
@@ -137,6 +152,7 @@ footer {
 	bottom: 0;
 	width: 100%;
 	overflow: hidden;
+>>>>>>> develop
 	font-family: Arial, Helvetica, sans-serif;
 }
 footer ul {
@@ -151,6 +167,14 @@ footer ul li {
 }
 
 .team {
+<<<<<<< HEAD
+	width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all .5s;
+	opacity: .5;
+=======
 	width: 2em;
 	height: 2em;
 	border-radius: 50%;
@@ -202,6 +226,7 @@ footer ul li {
 	border-bottom: 4px solid #ccc;
 	border-left: 1px solid #ccc;
 	min-height: 70%;
+>>>>>>> develop
 }
 
 .allignr {
