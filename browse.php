@@ -6,7 +6,7 @@ if(checkAuth(true) != ""){
 include("db_init.php");
 ?>
 
-<h1 style="font-family: Arial, Helvetica, sans-serif;">Search for a Carpool</h1>"
+<h1>Search for a Carpool</h1>"
  
 <link rel="stylesheet" type="text/css" href="css/browsestyle.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
@@ -15,18 +15,21 @@ include("db_init.php");
 <section>
 	<div id="posts">
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a destination.">
-		<div id="map"></div>
-		
-		</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
-				async defer>
-		</script>
 		
 		<br>
 		<div id="info">
 		</div>
 	</div>
-	<div id="details">Col2</div>
+	<div id="details">
+		<div id="map"></div>
+		</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
+				async defer>
+		</script>
+		<div id="dataDiv">
+		
+		</div>
+	</div>
 </section>
 
 

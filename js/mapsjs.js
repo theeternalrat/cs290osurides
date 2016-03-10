@@ -68,8 +68,8 @@ function initMap() {
 		});
 		
 		array.sort(function(a,b){
-			var loca = a[2].split(",");
-			var locb = b[2].split(",");
+			var loca = a[3].split(",");
+			var locb = b[3].split(",");
 			
 			var distA = getDist(destLat, destLon, parseFloat(loca[0]), parseFloat(loca[1]));
 			var distB = getDist(destLat, destLon, parseFloat(locb[0]), parseFloat(locb[1]));
@@ -78,8 +78,8 @@ function initMap() {
 		
 		var geocoder = new google.maps.Geocoder;
 		for(i = 0; i < array.length; i++){
-			var locations = array[i][2].split(",");
-			var radio = makeRadioButton('dots', locations, array[i][0], locations, geocoder);
+			var locations = array[i][3].split(",");
+			var radio = makeRadioButton('dots', locations, array[i][8], locations, geocoder, array[i][1], array[i][4]);
 			list.appendChild(radio);
 			var linebreak = document.createElement("br");
 			list.appendChild(linebreak);
@@ -96,7 +96,7 @@ function initMap() {
 }
 
 
-function makeRadioButton(name, value, text, endloc, geocoder) {
+function makeRadioButton(name, value, cid, endloc, geocoder, userName, date) {
 
     var label = document.createElement("label");
     var radio = document.createElement("input");
@@ -104,29 +104,89 @@ function makeRadioButton(name, value, text, endloc, geocoder) {
     radio.name = name;
     radio.value = value;
 	radio.id = "buttons";
-	radio.onclick = function() {movePointer(endloc)};
+	radio.onclick = function() {movePointer(cid, endloc)};
 
     label.appendChild(radio);
 	var text = document.createTextNode("");
 	label.appendChild(text);
-	var addr = getName(geocoder, value, text);
+	var addr = getName(geocoder, value, text, userName, date);
     
     return label;
 }
 
-function getName(geocoder, latlng, text){
+function getName(geocoder, latlng, text, userName, date){
 	var ll = {lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])};
-	var address;
+	var address; 
 	geocoder.geocode({'location': ll}, function(results, status){
 		if(status == google.maps.GeocoderStatus.OK){
-			text.nodeValue = results[1].formatted_address;
+			dateArr = date.split(' ');
+			text.nodeValue = userName + ", " + dateArr[0] + ", " + results[1].formatted_address;
 		} else {
 			text.nodeValue = "No address found.";
 		}
 	});
 }
 
-function movePointer(endloc){
+function movePointer(id, endloc){
+	console.log(id);
+	$.ajax({
+		type: 'get',
+		data: {'carpool_id': id},
+		url: 'get_carpool_data.php',
+		success: function(data){
+			var dataDiv = document.getElementById('dataDiv');
+			
+			while(dataDiv.firstChild)
+				dataDiv.removeChild(dataDiv.firstChild);
+			
+			var list = document.createElement('ul');
+			dataDiv.appendChild(list);
+			var json = JSON.parse(data);
+			console.log(json);
+			//name
+			var nameLabel = document.createElement("li");
+			var link = document.createElement("a");
+			var nameTextDriver = document.createTextNode(json["creator_onid"]);
+			var nameText = document.createTextNode("Driver: ");
+			nameLabel.appendChild(nameText);
+			link.title = json["creator_onid"];
+			link.appendChild(nameTextDriver);
+			link.href="user.php?q=" + json["carpool_creator"]; 
+			nameLabel.appendChild(link);
+			list.appendChild(nameLabel);
+			//start date
+			var startLabel = document.createElement("li");
+			var startText = document.createTextNode("Leave Date: " + json["leave_date"].split(' ')[0]);
+			startLabel.appendChild(startText);
+			list.appendChild(startLabel);
+			//description
+			var descripLabel = document.createElement('li');
+			var descripText = document.createTextNode("Description: " + json["description"]);
+			descripLabel.appendChild(descripText);
+			list.appendChild(descripLabel);
+			//start loc
+			var startlocLabel = document.createElement('li');
+			var startLocText = document.createTextNode("Start Location: " + json["start"]);
+			startlocLabel.appendChild(startLocText);
+			list.appendChild(startlocLabel);
+			//end loc
+			var endLabel = document.createElement('li');
+			var endText = document.createTextNode("End Location: " + json["end"]);
+			endLabel.appendChild(endText);
+			list.appendChild(endLabel);
+			//Link to listing
+			var listingLabel = document.createElement("li");
+			var listinglink = document.createElement("a");
+			var listingText = document.createTextNode("View Listing");
+			listingLabel.appendChild(listingText);
+			listinglink.title = "View Listing";
+			listinglink.href = "listing.php?id="+json["carpool_id"];
+			listinglink.appendChild(listingText);
+			listingLabel.appendChild(listinglink);
+			list.appendChild(listingLabel);
+		}	
+	});
+	
 	var lat = parseFloat(endloc[0]);
 	var lon = parseFloat(endloc[1]);
 	var latlng = new google.maps.LatLng(lat, lon);
