@@ -118,11 +118,11 @@ function getName(geocoder, latlng, text, userName, date){
 	var ll = {lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1])};
 	var address; 
 	geocoder.geocode({'location': ll}, function(results, status){
+		dateArr = date.split(' ');
 		if(status == google.maps.GeocoderStatus.OK){
-			dateArr = date.split(' ');
 			text.nodeValue = userName + ", " + dateArr[0] + ", " + results[1].formatted_address;
 		} else {
-			text.nodeValue = "No address found.";
+			text.nodeValue = userName + ", " + dateArr[0] + ", No address found.";
 		}
 	});
 }
