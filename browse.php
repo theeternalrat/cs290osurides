@@ -14,18 +14,21 @@ echo "<h1>This is the browse page!</h1>";
 <section>
 	<div id="posts">
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a destination.">
-		<div id="map"></div>
-		
-		</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
-				async defer>
-		</script>
 		
 		<br>
 		<div id="info">
 		</div>
 	</div>
-	<div id="details">Col2</div>
+	<div id="details">
+		<div id="map"></div>
+		</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
+				async defer>
+		</script>
+		<div id="dataDiv">
+		
+		</div>
+	</div>
 </section>
 
 
