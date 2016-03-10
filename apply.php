@@ -26,13 +26,14 @@ if (isset($_POST["description"])) {
 	$description = "N/A";
 }
 
-$all_fields_set = isset($_POST["id"]) && isset($_POST["Spot"]) && isset($_POST["user_score"]) ? true : false;
+//TODO LIMIT PASSENGER ADMISSION TO TOTAL NUMBER OF CARPOOL SPOTS
+$all_fields_set = isset($_POST["ride_id"]) && isset($_POST["uid"]) ? true : false;
 
 if ($all_fields_set) {
 
-	$ride_id			  = $_POST["id"];
-	$uid            = $_POST["Spot"];
-	$description    = $_POST["user_score"];
+	$ride_id			  = $_POST["ride_id"];
+	$uid            = $_POST["uid"];
+	$description    = $_POST["description"];
 
 	if ($stmt = $mysqli->prepare("insert into carpool_applications (ride_id_fk, applicant_uid_fk, decision_status, description) values(?,?,'PENDING',?)")) {
 		$stmt->bind_param("iis", $ride_id, $uid, $description);
