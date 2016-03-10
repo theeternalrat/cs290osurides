@@ -1,4 +1,6 @@
-<?php include("_header.php");?>
+<?php include("_header.php");
+if (checkAuth(true) != "") {
+?>
 <style>
 #errors {color: #FF0000;}
 </style>
@@ -34,4 +36,4 @@ Description:<br>
 <input type=submit>
 </form>
 
-<?php include("_footer.php");?>
+<?php } include("_footer.php");?>
