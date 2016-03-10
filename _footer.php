@@ -16,7 +16,7 @@
 			<a href = "https://github.com/leian7"><img src="imgs/github.svg" alt="Anne's GitHub" class= "team"></a>
 		</li>
 		<li>
-			<a href = "#"><img src="imgs/github.svg" alt="Rebecca's GitHub" class= "team"></a>
+			<a href = "https://github.com/farnhamr"><img src="imgs/github.svg" alt="Rebecca's GitHub" class= "team"></a>
 		</li>
 		<div>
 		<p> ©2016 OSU Rides</p>
