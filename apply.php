@@ -40,6 +40,20 @@ if ($all_fields_set) {
 		$stmt->execute();
 		$stmt->close();
 		echo '<p>Created...';
+
+//TODOFUTURE MOVE ALL SQL TO DAO's
+		if($ride_id){
+			if($passenger_stmt = $mysqli->prepare("INSERT into passengers values (?,?)")){
+				$passenger_stmt->bind_param("ii",$ride_id, $uid);
+				$passenger_stmt->execute();
+				$passenger_stmt->close();
+			}else{
+				echo 'insert into passengers failed';
+			}
+		}else{
+			echo 'mysql_insert_id() failed';
+		}
+
 	} else {
 		printf("Error: %s\n", $mysqli->error);
 	}

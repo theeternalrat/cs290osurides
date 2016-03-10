@@ -34,20 +34,19 @@ if ($all_fields_set) {
   $startloc			= $_POST["startlocation"];
   $endloc			= $_POST["endlocation"];
   $descrip 			= $_POST["descrip"];
-  $start 			= $_POST["startlocationstring"];
-  $end 				= $_POST["endlocationstring"];
-  
+
 
   echo $leave_date;
 
-	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, startlocation, endlocation, open_to_passengers, description, start, end) values(?,?,?,?,true,?,?,?)")) {
-		$stmt->bind_param("issssss", $carpool_creator, $leave_date, $startloc, $endloc, $descrip, $start, $end);
+	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, startlocation, endlocation, open_to_passengers, details) values(?,?,?,?,true,?)")) {
+		$stmt->bind_param("issss", $carpool_creator, $leave_date, $startloc, $endloc, $descrip);
 		$stmt->execute();
 		$stmt->close();
-		echo '<p>Created...';
-
 		$carpool_id = mysql_insert_id();
-		if(carpool_id){
+		echo '<p>Created. Ride ID = '.$carpool_id;
+
+//TODOFUTURE MOVE ALL SQL TO DAO's
+		if($carpool_id){
 			if($passenger_stmt = $mysqli->prepare("INSERT into passengers values (?,?)")){
 				$passenger_stmt->bind_param("ii",$carpool_id, $carpool_creator);
 				$passenger_stmt->execute();

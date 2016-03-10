@@ -92,19 +92,37 @@ function isPassenger($mysqli, $carpool_id, $uid){
 </div>
 
   <?php
+    echo 'DEBUG debugUID cases: 1 == passenger (only sees passengers), 2 == admin (sees passengers, can accept people), 3 == no privledge user. can only apply';
   //TODO implement session user_id usage
-    $debugUID = 1;
   //TODO REMOVE DEBUG VARS
   //TODO REMOVE DEBUG WHEN MERGING INTO MASTER
   //TODO TEST THESE CASES WITH UID SET AT TOP
-  if($debugUID === 1 || isPassenger($mysqli, $carpool_id, $uid) === true){//PASSENGER CASE
 
 
+  //isPassenger($mysqli, $carpool_id, $uid) === true
+  //TODONOW REMOVE DEBUGUID
+
+  //$debugUID == 1 || $debugUID == 2 ||
+
+  if (isset($_GET["id"])) {
+  	$carpool_id = $_GET["id"];
+  } else {
+  	echo "No carpool id provided";
+  }
+
+  if (isset($_GET["debugUID"])) {
+  	$debugUID = $_GET["debugUID"];
+  } else {
+  	echo "No debugUID provided";
+  }
+
+  if(isPassenger($mysqli, $carpool_id, $uid) === true){//PASSENGER CASE
     //TODO TODONOW FINISH THIS
     echo '<div id=passengers>';
+    echo 'PASSENGERS:';
     echo "<table class='Passengers'><tr><th>User ID<th></tr>";
-    if($passengers_stmt = $mysqli->prepare("select * from passengers WHERE ride_id_fk = ? AND user_id_fk = ?")){
-      $passengers_stmt->bind_param("ii", $carpool_id, $uid);
+    if($passengers_stmt = $mysqli->prepare("select * from passengers WHERE ride_id_fk = ?")){
+      $passengers_stmt->bind_param("i", $carpool_id);
       $passengers_stmt->execute();
 
       $passenger_results = $passengers_stmt->get_result();
@@ -125,42 +143,57 @@ function isPassenger($mysqli, $carpool_id, $uid){
     echo '</div>';
 
     //TODO NOW FINISH THIS
-    if($debugUID === 1 || $uid === $carpool_creator){//ADMIN SUBCASE
-
+    //$uid === $carpool_creator
+    if($uid === $carpool_creator){//ADMIN SUBCASE
       ?>
       <div id=applicant_review_interface>
-        <ol>
-        <li><div id=applications></div></li>
+        <div id=applicants>
           <?php
 
           //`app_id`, `ride_id_fk`, `applicant_uid_fk`, `decision_status`, `description`
           //convert to li factory
-          echo "<table class='Applications'><tr><th>Driver or Passewnger<th>Score<th>Recommend?<th>Description<th></tr>";
-          if ($apps_stmt = $mysqli->prepare("SELECT * FROM `carpool_applications` WHERE decision_status = 'PENDING' AND carpool_id = ?")) {
+          echo '<table>';
+          if ($apps_stmt = $mysqli->prepare("SELECT * FROM `carpool_applications` WHERE decision_status = 'PENDING' AND ride_id_fk = ?")) {
               $apps_stmt->bind_param("i", $id);
               $apps_stmt->execute();
+
               $app_rows = $apps_stmt->get_result();
               while($obj = $app_rows->fetch_object()){
-                      echo "<tr>";
-                      echo "<td>".htmlspecialchars($obj->driver_enum)."</td>";
-                      echo "<td>".htmlspecialchars($obj->score)."</td>";
-                      echo "<td>".htmlspecialchars($obj->recommend)."</td>";
-                      echo "<td>".htmlspecialchars($obj->description)."</td>";
-                      echo "</tr>";
+                //print_r($obj);
+                echo "<tr>";
+                //TODO Make this link to their user page
+                  echo "<td>".htmlspecialchars($obj->ride_id_fk)."</td>";
+                  echo "<td>".htmlspecialchars($obj->description)."</td>";
+                  ?>
+                  <td>
+                    <form method="post" action='decision.php' class="decision_accept">
+
+                      <button type=hidden value=<?php echo htmlspecialchars($obj->app_id);?> name="app_id">Accept</button>
+                      <input type=hidden value='ACCEPTED' name="decision_status">
+                    </form>
+                  </td>
+                  <td>
+                  <form method="post" action='decision.php' class="decision_reject">
+
+                    <button type=hidden value=<?php echo htmlspecialchars($obj->app_id);?> name="app_id">Reject</button>
+                    <input type=hidden value='REJECTED' name="decision_status">
+                  </form>
+                  </td>
+                  <?php
+                echo "</tr>";
               }
-
               $apps_stmt->close();
+          }else{
+            echo 'debug FAIL on prep for applicants fetch';
+            printf("Error: %s\n", $mysqli->error);
+
           }
-          echo "</table>";
+          echo '</table>';
           ?>
-        </ol>
+        </div>
       </div>
-
       <?php
-
     }
-
-    //TODO SECURE PAGE
   }else{//Non Passenger Case, Let them apply
     ?>
     <div id=listing_app>

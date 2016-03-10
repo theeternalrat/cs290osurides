@@ -26,10 +26,8 @@
 		<li><label>Leave date:</label> <input type="text" name="leave_date" placeholder="MM-DD-YYYY" required>
 		<span id="errors">
 		</span>
-		<li><label>Origin Latitude:</label> <input type="number" name="from_lat" required>
-		<li><label>Origin Longitude:</label> <input type="number" name="from_long" required>
-		<li><label>Destination Latitude:</label> <input type="number" name="destination_lat" required>
-		<li><label>Destination Longitude:</label> <input type="number" name="destination_long" required>
+		<li><label>Start Location:</label> <input type="text" name="startlocation" required>
+		<li><label>End Location:</label> <input type="text" name="endlocation" required>
 		<li><label>Details:<br></label> <textarea name="details" rows="4" cols="50" onKeyDown="charLimit(this.form.details, this.form.countdown, 500);"
 			onKeyUp="charLimit(this.form.details, this.form.countdown, 500);" placeholder="Other info you would like your passengers to know"></textarea>
 		<br><input readonly type="text" name="countdown" value="500"> characters left
