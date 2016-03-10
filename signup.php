@@ -120,45 +120,58 @@ function validate() {
 </div>
 <?php
 
-	if(isset($_POST["continue"])){
+	if(isset($_POST["continue"])){ //if form submitted okay,
 		
-		$rinfo = getAdvanced($_SESSION["onidid"]);
+		$rinfo = getAdvanced($_SESSION["onidid"]); //get their onid?
 		
-	$target_dir = "imgs/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+	$target_dir = "imgs/"; //get from this folder
+	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); //get that pic. temp place to store so we can check if legit 
 	
-	$uploadOk = 1;
-	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	$final_dir = $target_dir.$rinfo["uid"].".".$imageFileType;
+	$uploadOk = 1; //assume upload is okay at first
+	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION); //identify the file type of the pic 
+	$final_dir = $target_dir.$rinfo["uid"].".".$imageFileType; //where it's going to go
 	// Check if image file is a actual image or fake image
-		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		if($check !== false) {
+		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); //get the size of the pic
+		/*if($check !== false) { //yes, the picture provided DOES have a size; therefore it exists
 			$uploadOk = 1;
-		} else {
+		} else { //the picture doesn't have a size. 
 			$uploadOk = 0;
-		}
+		} */
 	// Check if file already exists
-	if (file_exists($final_dir)) {
+	if (file_exists($final_dir)) { //IGNORE this; vestigial
 		$uploadOk = 0;
 	}
-	// Check file size
+	// Check file size (if too big)
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
 		echo "Sorry, your file is too large.";
 		$uploadOk = 0;
 	}
 	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-		echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-		$uploadOk = 0;
+	if ($imageFileType != NULL) { //there is an image, it has a type, check the type
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+			echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			$uploadOk = 0;
+		}
 	}
+	if($check !== false && $uploadOk != 0) { //yes, the picture provided DOES have a size; therefore it exists, and size/filetype both ok
+			$avatar = $final_dir; //get what they gave you
+			$uploadOk = 1;
+	} 
+	else { //the picture doesn't have a size. 
+			$avatar = "imgs/cat.jpg"; //give them the cat
+			$uploadOk = 1; //still set for upload
+	}
+	
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 		echo "There was a problem uploading the avatar.";
 	// if everything is ok, try to upload file
-	} else {
+	} 
+	else if ($avatar != "imgs/cat.jpg") { //uploadOk still passes, but avatar not the cat-- move their provided file
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $final_dir)) {
 			echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-		} else {
+		} 
+		else {
 			echo "Sorry, there was an error uploading your file.";
 			$uploadOk = 0;
 		}
@@ -172,7 +185,7 @@ function validate() {
 			$seats = $_POST["seats"];
 		}
 		
-		$avatar = $final_dir;
+		//$avatar = $final_dir;
 		$nickname = htmlspecialchars($_POST["nickname"]);
 		$bio = htmlspecialchars($_POST["bio"]);
 		$status = htmlspecialchars($_POST["status"]);
