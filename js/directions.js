@@ -37,7 +37,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     geocoder1.geocode( { 'address': document.getElementById('start').value}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng1 = results[0].geometry.location;
-		var start = latlng1.lat() + "," + latlng1.lng();
+		var start = latlng1.lat().toFixedDown(6) + "," + latlng1.lng().toFixedDown(6);
 	    document.getElementById("startloc").value = start;
       } else {
         alert("Error occurred: " + status);
@@ -46,13 +46,19 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	geocoder2.geocode( { 'address': document.getElementById('end').value}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng2 = results[0].geometry.location;
-		var dest = latlng2.lat() + "," + latlng2.lng()
+		var dest = latlng2.lat().toFixedDown(6) + "," + latlng2.lng().toFixedDown(6);
 	    document.getElementById("endloc").value = dest;
       } else {
         alert("Error occurred: " + status);
       }
     });
   }
+  
+  Number.prototype.toFixedDown = function(digits) {
+    var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+        m = this.toString().match(re);
+    return m ? parseFloat(m[1]) : this.valueOf();
+};
   
  function validateForm(){
 	 //check if they entered start/end loc
