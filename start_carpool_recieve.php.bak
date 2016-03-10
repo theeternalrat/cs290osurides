@@ -17,13 +17,29 @@ $uid = $_SESSION["uid"];
 //print_r($_REQUEST);
 $all_fields_set = isset($_POST["carpool_creator"])  &&
                   isset($_POST["leave_date"])       &&
+<<<<<<< HEAD
                   isset($_POST["startlocation"])    &&
                   isset($_POST["endlocation"]) 			? true : false;
 
 
+=======
+                  isset($_POST["startlocation"])         &&
+                  isset($_POST["endlocation"]) ? true : false;
+>>>>>>> develop
 if ($all_fields_set) {
   $carpool_creator  = $_POST["carpool_creator"];
   $leave_date       = $_POST["leave_date"];
+<<<<<<< HEAD
+  $startloc					= $_POST["startlocation"];
+  $endloc						= $_POST["endlocation"];
+  $details 					= $_POST["details"];
+
+
+  echo $leave_date;
+
+	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, leave_date, startlocation, endlocation, open_to_passengers, details) values(?,?,?,?,true,?)")) {
+		$stmt->bind_param("issss", $carpool_creator, $leave_date, $startloc, $endloc, $details);
+=======
   $startloc			= $_POST["startlocation"];
   $endloc			= $_POST["endlocation"];
   $descrip 			= $_POST["descrip"];
@@ -34,6 +50,7 @@ if ($all_fields_set) {
   echo $leave_date;
 	if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, creator_onid, leave_date, startlocation, endlocation, open_to_passengers, description, start, end) values(?,?,?,?,?,true,?,?,?)")) {
 		$stmt->bind_param("isssssss", $carpool_creator, $onid, $leave_date, $startloc, $endloc, $descrip, $start, $end);
+>>>>>>> develop
 		$stmt->execute();
 		$stmt->close();
 		$carpool_id = mysql_insert_id();

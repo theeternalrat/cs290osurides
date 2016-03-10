@@ -16,6 +16,8 @@ if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = time();  // update creation time
 }
 
+include("db_init.php");
+
 function checkAuth($doRedirect) {
 	if (isset($_SESSION["onidid"]) && $_SESSION["onidid"] != "") return $_SESSION["onidid"];
 
@@ -38,12 +40,25 @@ function checkAuth($doRedirect) {
 		if ($matches && count($matches) > 1) {
 			$onidid = $matches[1];
 			$_SESSION["onidid"] = $onidid;
+			
+			$sql = "SELECT pk_id FROM `users` WHERE onid_id=?";
+			if($stmt = $mysqli->prepare($sql)){
+				$stmt->bind_param("s", $onidid);
+				$stmt->execute();
+				$stmt->bind_result($uid);
+				$stmt->fetch();
+				$stmt->close();
+				
+				$_SESSION["uid"] = $uid;
+			}
+			
 			return $onidid;
 		} 
 	} else if ($doRedirect) {
 		$url = "https://login.oregonstate.edu/cas/login?service=".$pageURL;
 		echo "<script>location.replace('" . $url . "');</script>";
 	} 
+	
 	return "";
 }
 
