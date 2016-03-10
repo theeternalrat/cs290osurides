@@ -6,8 +6,10 @@ include("db_init.php");
 		
 		$results->bind_result($id, $uid, $conid, $sloc, $eloc, $ldate, $desc, $start, $end);
 		$locations = array();
+		$i = 0;
 		while($results->fetch()){
-			$locations[$id] = array($uid, $conid, $sloc, $eloc, $ldate, $desc, $start, $end);
+			$locations[$i] = array($uid, $conid, $sloc, $eloc, $ldate, $desc, $start, $end, $id);
+			$i++;
 		}				
 		$results->close();
 		echo json_encode($locations);
