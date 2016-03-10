@@ -129,9 +129,10 @@ function validate() {
 	
 	$uploadOk = 1; //assume upload is okay at first
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION); //identify the file type of the pic 
+	//echo $imageFileType;
 	$final_dir = $target_dir.$rinfo["uid"].".".$imageFileType; //where it's going to go
 	// Check if image file is a actual image or fake image
-		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); //get the size of the pic
+	$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); //get the size of the pic
 		/*if($check !== false) { //yes, the picture provided DOES have a size; therefore it exists
 			$uploadOk = 1;
 		} else { //the picture doesn't have a size. 
@@ -153,7 +154,7 @@ function validate() {
 			$uploadOk = 0;
 		}
 	}
-	if($check !== false && $uploadOk != 0) { //yes, the picture provided DOES have a size; therefore it exists, and size/filetype both ok
+	if($check != false && $uploadOk != 0) { //yes, the picture provided DOES have a size; therefore it exists, and size/filetype both ok
 			$avatar = $final_dir; //get what they gave you
 			$uploadOk = 1;
 	} 
@@ -207,6 +208,11 @@ function validate() {
 		}
 		
 		$mysqli->close();
+		?>
+		<script type="text/javascript">
+			window.location.href = "http://web.engr.oregonstate.edu/~atkinsor/my_profile.php";
+		</script>
+		<?php
 	}
 }
 	
