@@ -7,7 +7,7 @@
 
 <script src="http://web.engr.oregonstate.edu/~atkinsor/js/directions.js"></script>
 <link rel="stylesheet" type="text/css" href="css/browsestyle.css">
-<h1 style="font-family: Arial, Helvetica, sans-serif;">Start a new Carpool</h1>
+<h1>Start a new Carpool</h1>
 <div class= "makecpool">
 		<div>
 		  <input id="start" class="controls" type="text" placeholder="Enter start">
