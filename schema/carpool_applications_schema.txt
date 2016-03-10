@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `carpool_applications` (
   `decision_status` enum('PENDING','ACCEPTED','REJECTED') DEFAULT 'PENDING',
   `description` varchar(500) NOT NULL,
   PRIMARY KEY (`app_id`),
-  UNIQUE KEY `approval_id_fk` (`decision_status`),
   KEY `ride_id_fk` (`ride_id_fk`),
   KEY `applicant_uid_fk` (`applicant_uid_fk`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
