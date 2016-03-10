@@ -84,8 +84,6 @@ function isPassenger($mysqli, $carpool_id, $uid){
 </div>
 
   <?php
-  //isPassenger($mysqli, $carpool_id, $uid) === true
-  //TODONOW REMOVE DEBUGUID
 
   if (isset($_GET["id"])) {
   	$carpool_id = $_GET["id"];
@@ -94,7 +92,6 @@ function isPassenger($mysqli, $carpool_id, $uid){
   }
 
   if(isPassenger($mysqli, $carpool_id, $uid) === true){//PASSENGER CASE
-    //TODO TODONOW FINISH THIS
     echo '<div id=passengers>';
     echo 'PASSENGERS:';
     echo "<table class='Passengers'><tr><th>User ID<th></tr>";
@@ -109,7 +106,6 @@ function isPassenger($mysqli, $carpool_id, $uid){
               echo "<td>".htmlspecialchars($obj->user_id_fk)."</td>";
               echo "</tr>";
       }
-      //TODO SPIT OUT ROWS
 
       $passengers_stmt->close();
 
