@@ -34,7 +34,7 @@ if ($all_fields_set) {
 	$uid            = $_POST["Spot"];
 	$description    = $_POST["user_score"];
 
-	if ($stmt = $mysqli->prepare("insert into carpool_applications (ride_id_fk, applicant_uid_fk, decision_status, description) values(?,?,PENDING,?)")) {
+	if ($stmt = $mysqli->prepare("insert into carpool_applications (ride_id_fk, applicant_uid_fk, decision_status, description) values(?,?,'PENDING',?)")) {
 		$stmt->bind_param("iis", $ride_id, $uid, $description);
 		$stmt->execute();
 		$stmt->close();
