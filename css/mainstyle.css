@@ -4,8 +4,8 @@ body {
 }
 
 header {
-	margin-top: 3%;
-	height: 2%;
+	margin-top: 2.98%;
+	height: 1.79%;
 	text-align: center;
 	font-family: "Arial Black", Helvetica, sans-serif;
 	background-color: #cc5200;
@@ -20,18 +20,20 @@ h1 {
 
 .header {
 	width: 100%;
-	height: 5%;
+	height: 4.76%;
 }
 
 .content {
 	width: 100%;
 	float: left;
 	min-height: 500px;
+	margin-left: 2em;
+	margin-right: 2em;
 }
 
 ul#navbar {
 	list-style-type: none;
-	margin-bottom: 1%;
+	margin-bottom: 1.19%;
 	margin-top: 0px;
 	padding: 0;
 	overflow: hidden;
@@ -76,7 +78,7 @@ ul#navbar .name {
 p {
 	color: #000000;
 	font-family: sans-serif;
-	font-size: 1em;
+	font-size: 0.9em;
 }
 
 .info {
@@ -191,7 +193,7 @@ footer ul li {
 .makecpool {
 	margin: 3% 6% 3% 5%;
 	padding: 2%;
-	max-width: 100%;
+	max-width: 70%;
 	max-height: 80%;
 	text-align: left;
 	background: #fff;
@@ -210,9 +212,13 @@ footer ul li {
 	float: left;
 }
 
+.mapwork {
+	float: right;
+	position: absolute;
+}
+
 .button {
 	font-family: Arial, Helvetica, sans-serif;
-	display: block;
 	color: white;
 	background: #cc5200;
 	border-radius: 11%;
@@ -262,7 +268,7 @@ footer ul li {
 	border-right: 1px solid #ccc;
 	border-bottom: 4px solid #ccc;
 	border-left: 1px solid #ccc;
-	min-height: 70%;
+	min-height: 55%;
 }
 
 .allignr {
@@ -273,15 +279,8 @@ footer ul li {
 	float: left;
 }
 
-.button {
+.try {
 	font-family: Arial, Helvetica, sans-serif;
-	display: block;
-	color: white;
-	background: #cc5200;
-	border-radius: 11%;
-  border: 2px solid #db7836;
-}
-
-.button:hover {
-	background-color: #db7836;
+	font-size: 1em;
+	list-style-type: none;
 }

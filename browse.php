@@ -4,7 +4,6 @@ include("_header.php");
 if(checkAuth(true) != ""){
 
 include("db_init.php");
-include("set_session.php");
 ?>
 
 <h1>Search for a Carpool</h1>
@@ -13,8 +12,9 @@ include("set_session.php");
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <script src="http://web.engr.oregonstate.edu/~atkinsor/js/mapsjs.js"></script>
 
-<section>
-	<div id="posts">
+
+<div class="makecpool">
+	<div class="allignl" id="posts">
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a destination.">
 		
 		<br>
@@ -22,7 +22,7 @@ include("set_session.php");
 		</div>
 	</div>
 	<div id="details">
-		<div id="map"></div>
+		<div class="allignr" id="map"></div>
 		</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
 				async defer>
@@ -31,7 +31,8 @@ include("set_session.php");
 		
 		</div>
 	</div>
-</section>
+</div>
+
 
 
 <script type="text/javascript">

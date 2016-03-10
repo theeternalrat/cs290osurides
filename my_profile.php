@@ -2,7 +2,7 @@
 	include("_header.php");
 
 	if (checkAuth(true) != "") {		
-	require("db_init.php");
+	include("db_init.php");
 	
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){

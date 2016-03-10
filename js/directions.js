@@ -46,7 +46,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	geocoder2.geocode( { 'address': document.getElementById('end').value}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var latlng2 = results[0].geometry.location;
-		var dest = latlng2.lat() + "," + latlng2.lng();
+		var dest = latlng2.lat() + "," + latlng2.lng()
 	    document.getElementById("endloc").value = dest;
       } else {
         alert("Error occurred: " + status);
