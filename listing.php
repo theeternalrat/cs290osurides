@@ -28,7 +28,7 @@ function isPassenger($mysqli, $carpool_id, $uid){
 }
 ?>
 
-<div id=listing_info>
+<div id=listing_info style="border: 2px solid #ccc;">
 
   <?php
   $uid = $_SESSION["uid"];
@@ -168,7 +168,7 @@ function isPassenger($mysqli, $carpool_id, $uid){
     }
   }else{//Non Passenger Case, Let them apply
     ?>
-    <div id=listing_app>
+    <div id=listing_app style="border: 2px solid #ccc; text-align: center;">
       <form method="post" action='apply.php' class="inform">
       <ul>
         <li><label>Application Description:<br></label> <textarea name="description" rows="4" cols="50" onKeyDown="charLimit(this.form.description, this.form.countdown, 1000);" onKeyUp="charLimit(this.form.description, this.form.countdown, 1000);" placeholder="Enter application description."></textarea>
