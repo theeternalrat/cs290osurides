@@ -13,14 +13,14 @@ include("db_init.php");
 <script src="http://web.engr.oregonstate.edu/~atkinsor/js/mapsjs.js"></script>
 
 <section>
-	<div id="posts">
+	<div id="posts" class="browse_map">
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a destination.">
 		
 		<br>
 		<div id="info">
 		</div>
 	</div>
-	<div id="details">
+	<div id="details" class="browse_map">
 		<div id="map"></div>
 		</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNrGItIuCmHf62lBSfz83By7enQQXWJTc&libraries=places&sign_in=true&callback=initMap"
