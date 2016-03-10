@@ -7,23 +7,24 @@ include("db_init.php");
 		
 	for($i = 0; $i < 1000; $i++){	
 		$uid = 22;
-		$sloc = frand(-90, 90, 6). "," . frand($min, $max, 6);
-		$eloc = frand(-90, 90, 6) . "," . frand($min, $max, 6);
+		$onid = 'atkinsor';
+		$leave_date = '2016-05-05';
+		$startloc = frand(-90, 90, 6). "," . frand($min, $max, 6);
+		$endloc = frand(-90, 90, 6) . "," . frand($min, $max, 6);
+		$descrip = "Im going to a place.";
+		$start = "Street name here.";
+		$end = "Street name here.";
 		
-		$stmt = $mysqli->prepare("INSERT INTO rides (carpool_creator, startlocation, endlocation) VALUES(?, ?, ?)");
-		if(false===$stmt)
-			echo "<br>prepare failed ". $mysqli->error;
-		
-		$rc = $stmt->bind_param("sss", $uid, $sloc, $eloc);
-		if(false===$rc)
-			echo "<br>bind_param failed ". $stmt->error;
-		
+		if ($stmt = $mysqli->prepare("insert into rides (carpool_creator, creator_onid, leave_date, startlocation, endlocation, open_to_passengers, description, start, end) values(?,?,?,?,?,true,?,?,?)")) {
+		$rc = $stmt->bind_param("isssssss", $uid, $onid, $leave_date, $startloc, $endloc, $descrip, $start, $end);
+		if($rc===false)
+			echo "problem binding";
 		$rc = $stmt->execute();
-		if(false===$rc)
-			echo "<br>execute failed ". $stmt->error;
-		
+		if($rc===false)
+			echo "problem executing".$stmt->error;
 		$stmt->close();
 		echo "Generated: ". $i;
+		}
 	}
 	
 function generateRandomString($length = 10) {

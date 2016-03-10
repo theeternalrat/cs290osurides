@@ -3,6 +3,7 @@
 
 	if (checkAuth(true) != "") {		
 	require("db_init.php");
+	require("set_session.php");
 	
 	$sqlq = "SELECT COUNT(*) FROM users WHERE onid_id=?";
 	if($results = $mysqli->prepare($sqlq)){
@@ -41,7 +42,47 @@
 
 <h1>My Profile</h1>
 
-<p>Average Rating: <?php echo $raiting; ?></p>
+<?php 
+
+if ($results_users = $mysqli->prepare("select avatar_url_rel,name,bio,email FROM users WHERE pk_id = ?")) {
+    $results_users->bind_param("i", $_SESSION["uid"]);
+  	$results_users->execute();
+
+
+    $obj = $results_users->get_result()->fetch_object();
+    if(!($obj)){
+      echo 'ERROR! NO SQL RESULT OBJECT';
+    }
+
+    $user_avatar_url_rel  = $obj->avatar_url_rel;
+    $user_name        = $obj->name;
+    $user_bio         = $obj->bio;
+    $user_email       = $obj->email;
+
+
+    $results_users->close();
+
+  }
+
+  ?>
+
+  <div id=avatar>
+    <img src="<?php echo $user_avatar_url_rel ?>"alt="Mountain View" style="width:304px;height:228px;">
+      <?php //echo "<p> Avatar: ".htmlspecialchars($user_avatar_url_rel)."</p>"?>
+  </div>
+  <div id=info>
+    <div id=name>
+      <?php echo "<p> User's Name: ".htmlspecialchars($user_name)."</p>"?>
+    </div>
+    <div id=bio>
+      <?php echo "<p> Bio: ".htmlspecialchars($user_bio)."</p>"?>
+    </div>
+    <div id=email>
+      <?php echo "<p> Email Address: ".htmlspecialchars($user_email)."</p>"?>
+    </div>
+  </div>
+</div>
+
 
 <?php /*
 

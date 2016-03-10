@@ -37,7 +37,7 @@ include("db_init.php");
 
   <div id=avatar>
     <img src="<?php echo $user_avatar_url_rel ?>"alt="Mountain View" style="width:304px;height:228px;">
-      <?php echo "<p> Avatar: ".htmlspecialchars($user_avatar_url_rel)."</p>"?>
+      <?php //echo "<p> Avatar: ".htmlspecialchars($user_avatar_url_rel)."</p>"?>
   </div>
   <div id=info>
     <div id=name>
@@ -55,6 +55,7 @@ include("db_init.php");
 
 <div id=reviews>
   <?php
+  /*
   echo "<table class='reviews'><tr><th>Driver or Passewnger<th>Score<th>Recommend?<th>Description<th></tr>";
   if ($result_reviews_stmt = $mysqli->prepare("select driver_enum,score,recommend,description from reviews WHERE PK_ID = ?")) {
       $result_reviews_stmt->bind_param("i", $id);
@@ -72,6 +73,7 @@ include("db_init.php");
       $result_reviews_stmt->close();
   }
   echo "</table>";
+  */
   ?>
 </div>
 
