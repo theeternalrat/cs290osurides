@@ -70,16 +70,22 @@ function isPassenger($mysqli, $carpool_id, $uid){
     $details            = $obj->details;
     $open_to_passengers = $obj->open_to_passengers;
 
-    crud_dispdiv_create('carpool_id','ID',$carpool_id);
-    crud_dispdiv_create('carpool_creator','Creator',$carpool_creator);
-    crud_dispdiv_create('carpool_leave_date','Leave Date',$leave_date);
-    crud_dispdiv_create('carpool_created_date','Created Date',$created_date);
-    crud_dispdiv_create('carpool_from_lat','From Latitude',$from_lat);
-    crud_dispdiv_create('carpool_from_long','From Longitude',$from_long);
-    crud_dispdiv_create('carpool_destination_lat','Destination Latitude',$destination_lat);
-    crud_dispdiv_create('carpool_destination_long','Destination Longitude',$destination_long);
-    crud_dispdiv_create('carpool_details','Details',$details);
-    crud_dispdiv_create('carpool_open_to_passengers','Open To Passengers',$open_to_passengers);
+
+
+    ?>
+    <ol>
+      <li><?php crud_dispdiv_create('carpool_id','ID',$carpool_id); ?></li>
+      <li><?php crud_dispdiv_create('carpool_creator','Creator',$carpool_creator);?></li>
+      <li><?php crud_dispdiv_create('carpool_leave_date','Leave Date',$leave_date);?></li>
+      <li><?php crud_dispdiv_create('carpool_created_date','Created Date',$created_date);?></li>
+      <li><?php crud_dispdiv_create('carpool_from_lat','From Latitude',$from_lat);?></li>
+      <li><?php crud_dispdiv_create('carpool_from_long','From Longitude',$from_long);?></li>
+      <li><?php crud_dispdiv_create('carpool_destination_lat','Destination Latitude',$destination_lat); ?></li>
+      <li><?php crud_dispdiv_create('carpool_destination_long','Destination Longitude',$destination_long); ?></li>
+      <li><?php crud_dispdiv_create('carpool_details','Details',$details); ?></li>
+      <li><?php crud_dispdiv_create('carpool_open_to_passengers','Open To Passengers',$open_to_passengers); ?></li>
+    </ol>
+    <?php
 
     $results_users_stmt->close();
 
