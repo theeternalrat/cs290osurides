@@ -1,5 +1,8 @@
 <?php
 include("_header.php");
+
+if(checkAuth(true) != ""){
+
 include("db_init.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -43,5 +46,7 @@ if ($all_fields_set) {
 
 <?php
 mysqli_close($mysqli);
+
+}
 include("_footer.php");
 ?>
