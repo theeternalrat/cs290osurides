@@ -15,7 +15,7 @@ header {
 h1 {
 	font-size: 2em;
 	font-weight: bold;
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
 }
 
@@ -108,9 +108,9 @@ p {
 	border: 4px solid #ccc;
 	border-radius: 0.5em;
 	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 2em;
 	font-weight: bold;
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .do_things_button:hover {
@@ -135,7 +135,7 @@ footer {
 	height: 6.5%;
 	width: 100%;
 	overflow:hidden;
-	font-family: "Arial Black", Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 footer ul {
 	list-style-type: none;
@@ -185,7 +185,7 @@ footer ul li {
 }
 
 .buttonl:hover {
-	background-color: #000000;
+	background-color: #db7836;
 }
 
 .makecpool {
@@ -211,7 +211,6 @@ footer ul li {
 
 .button {
 	font-family: Arial, Helvetica, sans-serif;
-	padding: 0.5em;
 	display: block;
 	color: white;
 	background: #cc5200;
