@@ -1,4 +1,7 @@
-<?php include("_header.php");?>
+<?php include("_header.php");
+if(checkAuth(true) != ""){
+
+?>
 <html>
 <head>
 <style>
@@ -26,24 +29,17 @@
 		<li><label>Leave date:</label> <input type="text" name="leave_date" placeholder="MM-DD-YYYY" required>
 		<span id="errors">
 		</span>
-		<li><label>Origin Latitude:</label> <input type="number" name="from_lat" required>
-		<li><label>Origin Longitude:</label> <input type="number" name="from_long" required>
-		<li><label>Destination Latitude:</label> <input type="number" name="destination_lat" required>
-		<li><label>Destination Longitude:</label> <input type="number" name="destination_long" required>
+		<li><label>Start Location:</label> <input type="text" name="startlocation" required>
+		<li><label>End Location:</label> <input type="text" name="endlocation" required>
 		<li><label>Details:<br></label> <textarea name="details" rows="4" cols="50" onKeyDown="charLimit(this.form.details, this.form.countdown, 500);"
 			onKeyUp="charLimit(this.form.details, this.form.countdown, 500);" placeholder="Other info you would like your passengers to know"></textarea>
 		<br><input readonly type="text" name="countdown" value="500"> characters left
 		<li><input class="button" type=submit>
 		</ul>
-		Description:<br>
-			<textarea rows="4" cols="50" placeholder="Enter a bit about your trip." name="descrip" onKeyDown="charLimit(this.form.bio, this.form.countdown, 1000);"
-			onKeyUp="charLimit(this.form.bio, this.form.countdown, 1000);"></textarea><br>
-		<input type="text" name="startlocation" id="startloc" hidden novalidate>
-		<input type="text" name="endlocation" id="endloc" hidden novalidate>
-		<input type="text" name="startlocationstring" id="startlocs" hidden novalidate>
-		<input type="text" name="endlocationstring" id="endlocs" hidden novalidate>
-		<input class="button" type=submit>
 		</form>
-	</div>	
+	</div>
 </div>
-<?php include("_footer.php");?>
+<?php
+}
+include("_footer.php");
+?>

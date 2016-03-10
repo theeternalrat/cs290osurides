@@ -1,0 +1,49 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.9.4
+-- http://www.phpmyadmin.net
+--
+-- Host: oniddb
+-- Generation Time: Mar 09, 2016 at 11:41 PM
+-- Server version: 5.5.47
+-- PHP Version: 5.2.6-1+lenny16
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `craryg-db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carpool_applications`
+--
+
+CREATE TABLE IF NOT EXISTS `carpool_applications` (
+  `app_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ride_id_fk` int(11) NOT NULL,
+  `applicant_uid_fk` int(11) NOT NULL,
+  `decision_status` enum('PENDING','ACCEPTED','REJECTED') DEFAULT 'PENDING',
+  `description` varchar(500) NOT NULL,
+  PRIMARY KEY (`app_id`),
+  KEY `ride_id_fk` (`ride_id_fk`),
+  KEY `applicant_uid_fk` (`applicant_uid_fk`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `carpool_applications`
+--
+
+INSERT INTO `carpool_applications` (`app_id`, `ride_id_fk`, `applicant_uid_fk`, `decision_status`, `description`) VALUES
+(1, 2, 1, 'PENDING', 'Let me in I''m trustworthy');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `carpool_applications`
+--
+ALTER TABLE `carpool_applications`
+  ADD CONSTRAINT `carpool_applications_ibfk_1` FOREIGN KEY (`ride_id_fk`) REFERENCES `rides` (`carpool_id`),
+  ADD CONSTRAINT `carpool_applications_ibfk_2` FOREIGN KEY (`applicant_uid_fk`) REFERENCES `users` (`pk_id`);
