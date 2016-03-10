@@ -39,7 +39,7 @@
 <html>
 <body>
 
-<h1 style="font-family: Arial, Helvetica, sans-serif;">My Profile</h1>
+<h1>My Profile</h1>
 
 <p>Average Rating: <?php echo $raiting; ?></p>
 
