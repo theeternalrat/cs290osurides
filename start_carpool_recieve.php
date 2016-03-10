@@ -12,8 +12,7 @@ error_reporting(E_ALL);
 
 <?php
 
-//TODO SET THIS AS SESSION[$uid] once thats implemented.
-$uid = 1;
+$uid = $_SESSION["uid"];
 
 //print_r($_REQUEST);
 
